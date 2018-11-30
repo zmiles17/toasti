@@ -1,0 +1,60 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+header {
+    background-color: rgb(28,28,29);
+    height: 50px;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 25px;
+}
+
+h2 {
+    font-size: 45px;
+    float: left;
+    color: white;
+    margin-left: 25px;
+
+}
+
+button {
+    background: none;
+	color: white;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    float: right;
+    font-size: 20px;
+    margin-right: 25px;
+    margin-top: 15px;
+}
+
+.image-container {
+    height: 300px;
+    background-position-y: 53%;
+    background-image: url(../assets/cocktail.jpg);
+}
+
+h1 {
+    color: white;
+    font-family: "Lora";
+    font-size: 60px;
+    text-align: center;
+    padding-top: 50%;
+}
+form {
+    margin-top: 50px;
+    width: 100%;
+}
+
+input {
+    border: black 1px solid;
+    width: 100%;
+    height: 30px;
+}
