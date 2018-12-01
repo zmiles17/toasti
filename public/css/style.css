@@ -22,7 +22,7 @@ h2 {
 
 }
 
-button {
+.add-recipe {
     background: none;
 	color: white;
 	border: none;
@@ -34,6 +34,11 @@ button {
     font-size: 20px;
     margin-right: 25px;
     margin-top: 15px;
+}
+
+.submit-recipe {
+    width: fit-content;
+    justify-self: center;
 }
 
 .image-container {
@@ -60,11 +65,18 @@ form {
 ::placeholder{
     font-family: "Open Sans", sans-serif;
 }
+
+a{
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
 input {
     border: black 1px solid;
     width: 97%;
     height: 30px;
     justify-self: center;
+    margin-bottom: 20px;
 }
 
 .info {

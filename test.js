@@ -31,12 +31,12 @@ describe('GET /api/recipes', function() {
         ingredient: '3/4 oz Sweet Vermouth, 2 1/2 oz Blended Bourbon, dash Angostura bitters, 2 or 3 Ice, 1 Maraschino cherry, 1 twist of Orange peel', 
         image: 'https://www.thecocktaildb.com/images/media/drink/ec2jtz1504350429.jpg'  
       },
-      { instructions: 'Rub the rim of the glass with the lime slice to make the salt stick to it' + 'Take care to moisten only the outer rim and sprinkle the salt on it' + 'The salt should present to the lips of the imbiber and never mix into the cocktail' + 'Shake the other ingredients with ice, then carefully pour into the glass.', 
+      { instructions: `Rub the rim.`, 
         name: 'Margarita', 
         ingredient: '1 1/2 oz Tequila, 1/2 oz Triple sec, 1 oz Lime juice, Salt', 
         image: 'https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg'  
       },
-      { instructions: 'Mix all contents in a highball glass and sitr gently' + 'Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist', 
+      { instructions: `Mix all contents in a highball glass and sitr gently. Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist.`, 
         name: 'Long Island Iced Tea', 
         ingredient: '1/2 oz Vodka, 1/2 oz Tequila, 1/2 oz Light rum, 1/2 oz Gin, 1 dash Coca-Cola, Twist of Lemon pee', 
         image: 'https://www.thecocktaildb.com/images/media/drink/wx7hsg1504370510.jpg' 
@@ -53,9 +53,7 @@ describe('GET /api/recipes', function() {
 
         expect(responseStatus).to.equal(200);
 
-        expect(responseBody)
-          .to.be.an('array')
-          .that.has.lengthOf();
+       
 
         expect(responseBody[0])
           .to.be.an('object')
@@ -65,6 +63,10 @@ describe('GET /api/recipes', function() {
           ingredient: '1 oz Gin, 1 oz Campari, 1 oz Sweet Vermouth', 
           image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg' 
          });
+         
+         expect(responseBody)
+          .to.be.an('array')
+          .that.has.lengthOf(4);
 
         expect(responseBody[1])
           .to.be.an('object')
@@ -78,7 +80,7 @@ describe('GET /api/recipes', function() {
         expect(responseBody[2])
         .to.be.an('object')
         .that.includes({ 
-        instructions: 'Rub the rim of the glass with the lime slice to make the salt stick to it' + 'Take care to moisten only the outer rim and sprinkle the salt on it' + 'The salt should present to the lips of the imbiber and never mix into the cocktail' + 'Shake the other ingredients with ice, then carefully pour into the glass.', 
+        instructions: `Rub the rim.`,
         name: 'Margarita', 
         ingredient: '1 1/2 oz Tequila, 1/2 oz Triple sec, 1 oz Lime juice, Salt', 
         image: 'https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg' 
@@ -87,7 +89,7 @@ describe('GET /api/recipes', function() {
         expect(responseBody[3])
         .to.be.an('object')
         .that.includes({ 
-        instructions: 'Mix all contents in a highball glass and sitr gently' + 'Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist', 
+        instructions: `Mix all contents in a highball glass and sitr gently. Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist.`, 
         name: 'Long Island Iced Tea', 
         ingredient: '1/2 oz Vodka, 1/2 oz Tequila, 1/2 oz Light rum, 1/2 oz Gin, 1 dash Coca-Cola, Twist of Lemon pee', 
         image: 'https://www.thecocktaildb.com/images/media/drink/wx7hsg1504370510.jpg' 
@@ -111,13 +113,14 @@ describe('POST /api/recipes', function() {
     let reqBody = {
       instructions: 'Shake it, stir it, serve it up right',
       name: 'stealthy',
-      ingredients: 'stealth, cunning, fortitude',
+      ingredient: 'stealth, cunning, fortitude',
       image: 'https://www.thecocktaildb.com/images/media/drink/jfvyog1530108909.jpg'
     };
 
     // POST the request body to the server
     request
       .post('/api/recipes')
+      .set("content-type", "application/json")
       .send(reqBody)
       .end(function(err, res) {
         var responseStatus = res.status;
