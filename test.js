@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 let request;
 
 
-describe('GET /api/users', function() {
+describe('GET /api/recipes', function() {
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
   beforeEach(function() {
@@ -18,16 +18,32 @@ describe('GET /api/users', function() {
     return db.sequelize.sync({ force: true });
   });
 
-  it('should find all users', function(done) {
+  it('should find all recipes', function(done) {
     // Add some users to the db to test with
-    db.User.bulkCreate([
-      { username: 'Sally', password: 'test' },
-      { username: 'Lane', password: 'sample' },
-      { username: 'Chan', password: 'newPass' },
-      { username: 'Muhammad', password: 'password' }
+    db.Recipe.bulkCreate([
+      { instructions: 'Stir into glass over ice, garnish and serve', 
+        name: 'Negroni', 
+        ingredient: '1 oz Gin, 1 oz Campari, 1 oz Sweet Vermouth', 
+        image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg' 
+       },
+      { instructions: 'Stirred over ice, strained into a chilled glass, garnished, and served up', 
+        name: 'Manhatten', 
+        ingredient: '3/4 oz Sweet Vermouth, 2 1/2 oz Blended Bourbon, dash Angostura bitters, 2 or 3 Ice, 1 Maraschino cherry, 1 twist of Orange peel', 
+        image: 'https://www.thecocktaildb.com/images/media/drink/ec2jtz1504350429.jpg'  
+      },
+      { instructions: 'Rub the rim of the glass with the lime slice to make the salt stick to it' + 'Take care to moisten only the outer rim and sprinkle the salt on it' + 'The salt should present to the lips of the imbiber and never mix into the cocktail' + 'Shake the other ingredients with ice, then carefully pour into the glass.', 
+        name: 'Margarita', 
+        ingredient: '1 1/2 oz Tequila, 1/2 oz Triple sec, 1 oz Lime juice, Salt', 
+        image: 'https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg'  
+      },
+      { instructions: 'Mix all contents in a highball glass and sitr gently' + 'Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist', 
+        name: 'Long Island Iced Tea', 
+        ingredient: '1/2 oz Vodka, 1/2 oz Tequila, 1/2 oz Light rum, 1/2 oz Gin, 1 dash Coca-Cola, Twist of Lemon pee', 
+        image: 'https://www.thecocktaildb.com/images/media/drink/wx7hsg1504370510.jpg' 
+      }
     ]).then(function() {
       // Request the route that returns all examples
-      request.get('/api/users').end(function(err, res) {
+      request.get('/api/recipes').end(function(err, res) {
         let responseStatus = res.status;
         let responseBody = res.body;
 
@@ -39,23 +55,43 @@ describe('GET /api/users', function() {
 
         expect(responseBody)
           .to.be.an('array')
-          .that.has.lengthOf(4);
+          .that.has.lengthOf();
 
         expect(responseBody[0])
           .to.be.an('object')
-          .that.includes({ username: 'Sally', password: 'test' });
+          .that.includes({ 
+          instructions: 'Stir into glass over ice, garnish and serve', 
+          name: 'Negroni', 
+          ingredient: '1 oz Gin, 1 oz Campari, 1 oz Sweet Vermouth', 
+          image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg' 
+         });
 
         expect(responseBody[1])
           .to.be.an('object')
-          .that.includes({ username: 'Lane', password: 'sample' });
+          .that.includes({ 
+          instructions: 'Stirred over ice, strained into a chilled glass, garnished, and served up', 
+          name: 'Manhatten', 
+          ingredient: '3/4 oz Sweet Vermouth, 2 1/2 oz Blended Bourbon, dash Angostura bitters, 2 or 3 Ice, 1 Maraschino cherry, 1 twist of Orange peel', 
+          image: 'https://www.thecocktaildb.com/images/media/drink/ec2jtz1504350429.jpg'  
+         });
 
         expect(responseBody[2])
         .to.be.an('object')
-        .that.includes({ username: 'Chan', password: 'newPass' });
+        .that.includes({ 
+        instructions: 'Rub the rim of the glass with the lime slice to make the salt stick to it' + 'Take care to moisten only the outer rim and sprinkle the salt on it' + 'The salt should present to the lips of the imbiber and never mix into the cocktail' + 'Shake the other ingredients with ice, then carefully pour into the glass.', 
+        name: 'Margarita', 
+        ingredient: '1 1/2 oz Tequila, 1/2 oz Triple sec, 1 oz Lime juice, Salt', 
+        image: 'https://www.thecocktaildb.com/images/media/drink/wpxpvu1439905379.jpg' 
+       });
 
         expect(responseBody[3])
         .to.be.an('object')
-        .that.includes({ username: 'Muhammad', password: 'password' });
+        .that.includes({ 
+        instructions: 'Mix all contents in a highball glass and sitr gently' + 'Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist', 
+        name: 'Long Island Iced Tea', 
+        ingredient: '1/2 oz Vodka, 1/2 oz Tequila, 1/2 oz Light rum, 1/2 oz Gin, 1 dash Coca-Cola, Twist of Lemon pee', 
+        image: 'https://www.thecocktaildb.com/images/media/drink/wx7hsg1504370510.jpg' 
+       });
 
         // The `done` function is used to end any asynchronous tests
         done();
@@ -64,21 +100,23 @@ describe('GET /api/users', function() {
   });
 });
 
-describe('POST /api/user', function() {
+describe('POST /api/recipes', function() {
   beforeEach(function() {
     request = chai.request(server);
     return db.sequelize.sync({ force: true });
   });
 
   it('should save an example', function(done) {
-    var reqBody = {
-      username: 'John-Smith',
-      password: 'stealthy'
+    let reqBody = {
+      instructions: 'Shake it, stir it, serve it up right',
+      name: 'stealthy',
+      ingredients: 'stealth, cunning, fortitude',
+      image: 'https://www.thecocktaildb.com/images/media/drink/jfvyog1530108909.jpg'
     };
 
     // POST the request body to the server
     request
-      .post('/api/user')
+      .post('/api/recipes')
       .send(reqBody)
       .end(function(err, res) {
         var responseStatus = res.status;
