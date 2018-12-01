@@ -1,0 +1,96 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+}
+
+header {
+    background-color: rgb(28,28,29);
+    height: 50px;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 25px;
+    box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
+}
+
+h2 {
+    font-size: 45px;
+    float: left;
+    color: white;
+    margin-left: 25px;
+
+}
+
+.add-recipe {
+    background: none;
+	color: white;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+    float: right;
+    font-size: 20px;
+    margin-right: 25px;
+    margin-top: 15px;
+}
+
+.submit-recipe {
+    width: fit-content;
+    justify-self: center;
+}
+
+.image-container {
+    display: grid;
+    height: 300px;
+    background-position-y: 53%;
+    background-position-x: 237%;
+    background-blend-mode: lighten;
+    background-image: url(../assets/cocktail.jpg);
+}
+
+h1 {
+    color: white;
+    font-family: "Lora";
+    font-size: 60px;
+    text-align: center;
+    align-self: center;
+}
+form {
+    margin-top: 50px;
+    width: 100%;
+    display: grid;
+}
+::placeholder{
+    font-family: "Open Sans", sans-serif;
+}
+
+a{
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+input {
+    border: black 1px solid;
+    width: 97%;
+    height: 30px;
+    justify-self: center;
+    margin-bottom: 20px;
+}
+
+.info {
+    margin-left: 25px;
+    margin-top: 30px;
+    font-family: "Open Sans", sans-serif;
+}
+
+h3 {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+p {
+    line-height: 30px;
+}
