@@ -36,8 +36,11 @@ button {
 }
 
 .image-container {
+    display: grid;
     height: 300px;
     background-position-y: 53%;
+    background-position-x: 237%;
+    background-blend-mode: lighten;
     background-image: url(../assets/cocktail.jpg);
 }
 
@@ -46,15 +49,32 @@ h1 {
     font-family: "Lora";
     font-size: 60px;
     text-align: center;
-    padding-top: 50%;
+    align-self: center;
 }
 form {
     margin-top: 50px;
     width: 100%;
+    display: grid;
 }
 
 input {
     border: black 1px solid;
-    width: 100%;
+    width: 97%;
     height: 30px;
+    justify-self: center;
+}
+
+.info {
+    margin-left: 25px;
+    margin-top: 30px;
+}
+
+h3 {
+    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 35px;
+}
+
+p {
+    line-height: 30px;
 }
