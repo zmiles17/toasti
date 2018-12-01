@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
     } 
   });
   Recipe.associate = function (models) {
-    Recipe.hasMany(models.Ingredients);
+    Recipe.hasMany(models.Ingredient);
   };
 
   return Recipe;
