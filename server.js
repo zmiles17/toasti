@@ -9,6 +9,7 @@ app.use(express.urlencoded({ extended: true}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
+require("./routes/html-routes")(app);
 require("./routes/api-routes")(app);
 
 db.sequelize.sync({ force: true }).then(function() {
