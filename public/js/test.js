@@ -27,7 +27,7 @@ describe('search', function () {
     server.respond();
     expect($('#name-0').text()).to.equal('Negroni');
     expect($('#instructions-0').text()).to.equal('Stir into glass over ice, garnish and serve');
-    expect($('#image-0').atr('src')).to.equal('https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg');
+    expect($('#image-0').attr('src')).to.equal('https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg');
     expect($('#ingredients-0').html()).to.equal('<ul><li>1 oz Gin</li><li>1 oz Campari</li><li>1 oz Sweet Vermouth</li></ul>');
     //may need to go back in and redo the ul structure
   });
