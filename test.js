@@ -92,8 +92,6 @@ describe('GET /api/recipe', function () {
                         .to.be.an('array')
                         .that.has.lengthOf(4);
 
-                      // console.log(responseBody[0]);
-
                       expect(responseBody[0])
                         .to.be.an('object')
                         .that.includes({
@@ -136,7 +134,6 @@ describe('GET /api/recipe', function () {
                         .that.includes({
                           instruction: 'Mix all contents in a highball glass and sitr gently' + 'Add dash of Coca-Cola for the coloring and garnish with lemon or lime twist',
                           name: 'Long Island Iced Tea',
-                          // ingredient: '1/2 oz Vodka, 1/2 oz Tequila, 1/2 oz Light rum, 1/2 oz Gin, 1 dash Coca-Cola, Twist of Lemon pee', 
                           // image: 'https://www.thecocktaildb.com/images/media/drink/wx7hsg1504370510.jpg' 
                         });
                       expect(responseBody[3].ingredients).to.be.an('array');
@@ -164,7 +161,10 @@ describe('POST /api/recipe', function () {
     let reqBody = {
       instruction: 'Shake it, stir it, serve it up right',
       name: 'stealthy',
-      // ingredient: 'stealth, cunning, fortitude',
+      ingredients: [
+        { name: 'stealth' },
+        { name: 'cunning' },
+        { name: 'fortitude' }],
       // image: 'https://www.thecocktaildb.com/images/media/drink/jfvyog1530108909.jpg'
     };
 
