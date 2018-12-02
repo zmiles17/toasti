@@ -1,17 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
-  const Recipe = sequelize.define("Recipe", {
+  const Recipe = sequelize.define("recipe", {
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(255),
       allowNull: false,
       validate: {
-        len: [1, 140]
+        len: [1, 255]
       }
     },
     instruction: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(20000),
       allowNull: false,
       validate: {
-        len: [1, 2000]
+        len: [1, 20000]
       }
     },
     TotalStars: {
@@ -22,7 +22,7 @@ module.exports = function (sequelize, DataTypes) {
     } 
   });
   Recipe.associate = function (models) {
-    Recipe.hasMany(models.Ingredient);
+    Recipe.hasMany(models.ingredient);
   };
 
   return Recipe;
