@@ -1,12 +1,16 @@
+const expect = require('chai').expect;
+const app = require('./app.js');
+
 describe('average', function(){
     it('should return the average of ratings for recipe', function(){
-        expect (average(4,6)).to.equal(5);
+        expect(app.average(4)).to.equal(5);
     });
 })
 
-describe('ratingRender', function(){
-    it('should ')
-})
+// describe('ratingRender', function(){
+//     it('should ')
+// })
+
 describe('search', function () {
 
   let server;
