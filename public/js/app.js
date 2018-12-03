@@ -23,9 +23,11 @@ function transition4 () {
 function transition5 () {
     $(".image-container").css("background-image", "url(../assets/cocktail5.jpg)");
 }
+
 function transition6 () {
     $(".image-container").css("background-image", "url(../assets/cocktail6.jpg)");
 }
+
 function transition7 () {
     $(".image-container").css("background-image", "url(../assets/cocktail7.jpg)");
 }
@@ -39,9 +41,8 @@ function transition () {
     setTimeout(transition6, 30000);
     setTimeout(transition7, 35000);
 };
+
 transition();
 
-setInterval(function(){
-    transition();
-}, 40000)
+setInterval(transition, 39100);
 
