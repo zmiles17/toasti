@@ -30,7 +30,7 @@ function transition7 () {
     $(".image-container").css("background-image", "url(../assets/cocktail7.jpg)");
 }
 
-setInterval(function(){
+function transition () {
     setTimeout(transition1, 5000);
     setTimeout(transition2, 10000);
     setTimeout(transition3, 15000);
@@ -38,5 +38,10 @@ setInterval(function(){
     setTimeout(transition5, 25000);
     setTimeout(transition6, 30000);
     setTimeout(transition7, 35000);
+};
+transition();
+
+setInterval(function(){
+    transition();
 }, 40000)
 
