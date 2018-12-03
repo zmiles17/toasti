@@ -161,10 +161,10 @@ describe('POST /api/recipe', function () {
     let reqBody = {
       instruction: 'Shake it, stir it, serve it up right',
       name: 'stealthy',
-      ingredients: [
-        { name: 'stealth' },
-        { name: 'cunning' },
-        { name: 'fortitude' }],
+      // ingredients: [
+      //   { name: 'stealth' },
+      //   { name: 'cunning' },
+      //   { name: 'fortitude' }],
       // image: 'https://www.thecocktaildb.com/images/media/drink/jfvyog1530108909.jpg'
     };
 

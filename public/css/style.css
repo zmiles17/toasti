@@ -10,9 +10,9 @@ body {
 header {
     background-color: rgb(28,28,29);
     height: 50px;
-    font-family: "Open Sans", sans-serif;
     margin-bottom: 25px;
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
+    font-family: "Open Sans", sans-serif;
 }
 
 h2 {
@@ -20,7 +20,7 @@ h2 {
     float: left;
     color: white;
     margin-left: 25px;
-
+    font-family: "Dancing Script";
 }
 
 .add-recipe {
@@ -50,6 +50,7 @@ h2 {
     background-position: center;
     background-image: url(../assets/cocktail7.jpg);
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    transition: all 0.9s ease;
 }
 
 h1 {
