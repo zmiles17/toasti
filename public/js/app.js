@@ -1,9 +1,12 @@
-let totalRtngs = 6;
-let totalVotes = 2;
+let totalRtngs = 0;
+let totalVotes = 0;
+let didRate = false;
 
 
 const average = function(num1){
-    let result = num1+totalRtngs/totalVotes
+    totalVotes++;
+    sum = num1 + totalRtngs
+    let result = sum/totalVotes
 
     return result;
 
@@ -13,3 +16,7 @@ const average = function(num1){
 //search function should not allow integers
 
 //search function should not 
+
+module.exports = {
+    average: average
+}
