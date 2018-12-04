@@ -151,6 +151,139 @@ describe('GET /api/recipe', function () {
           });
       });
   });
+
+  it('should search for recipes matching name', function (done) {
+    // Add some data to the db to test with
+
+    db.recipe.create({
+      id: 1,
+      instruction: 'Stir into glass over ice, garnish and serve',
+      name: 'Negroni',
+      ingredients: [
+        { name: '1 oz Gin' },
+        { name: '1 oz Campari' },
+        { name: '1 oz Sweet Vermouth' }],
+      image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
+    }, {
+        include: [db.ingredient]
+      }).then(function () {
+
+        // q=Negroni  
+        request.get('/api/recipe?q=Negroni').end(function (err, res) {
+          let responseStatus = res.status;
+          let responseBody = res.body;
+
+          // Run assertions on the response
+
+          expect(err).to.be.null;
+
+          expect(responseStatus).to.equal(200);
+
+          expect(responseBody)
+            .to.be.an('array')
+            .that.has.lengthOf(1);
+
+          expect(responseBody[0])
+            .to.be.an('object')
+            .that.includes({
+              instruction: 'Stir into glass over ice, garnish and serve',
+              name: 'Negroni',
+              // image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg' 
+            });
+          expect(responseBody[0].ingredients).to.be.an('array');
+          expect(responseBody[0].ingredients.map(i => i.name)).to.deep.equal([
+            '1 oz Gin', '1 oz Campari', '1 oz Sweet Vermouth'
+          ])
+
+          done();
+        });
+
+      });
+  });
+
+  it('should search for recipes matching ingredient', function (done) {
+    // Add some data to the db to test with
+
+    db.recipe.create({
+      id: 1,
+      instruction: 'Stir into glass over ice, garnish and serve',
+      name: 'Negroni',
+      ingredients: [
+        { name: '1 oz Gin' },
+        { name: '1 oz Campari' },
+        { name: '1 oz Sweet Vermouth' }],
+      image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
+    }, {
+        include: [db.ingredient]
+      }).then(function () {
+
+        // q=Gin
+        request.get('/api/recipe?q=Gin').end(function (err, res) {
+          let responseStatus = res.status;
+          let responseBody = res.body;
+
+          // Run assertions on the response
+
+          expect(err).to.be.null;
+
+          expect(responseStatus).to.equal(200);
+
+          console.log(responseBody);          
+
+          expect(responseBody)
+            .to.be.an('array')
+            .that.has.lengthOf(1);
+
+          expect(responseBody[0])
+            .to.be.an('object')
+            .that.includes({
+              instruction: 'Stir into glass over ice, garnish and serve',
+              name: 'Negroni',
+              // image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg' 
+            });
+          expect(responseBody[0].ingredients).to.be.an('array');
+          expect(responseBody[0].ingredients.map(i => i.name)).to.deep.equal([
+            '1 oz Gin', '1 oz Campari', '1 oz Sweet Vermouth'
+          ])
+
+          done();
+        });
+      });
+  });
+
+  it('should not return any results', function (done) {
+    db.recipe.create({
+      id: 1,
+      instruction: 'Stir into glass over ice, garnish and serve',
+      name: 'Negroni',
+      ingredients: [
+        { name: '1 oz Gin' },
+        { name: '1 oz Campari' },
+        { name: '1 oz Sweet Vermouth' }],
+      image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
+    }, {
+        include: [db.ingredient]
+      }).then(function () {
+
+        // q=Gin
+        request.get('/api/recipe?q=Veronica').end(function (err, res) {
+          let responseStatus = res.status;
+          let responseBody = res.body;
+
+          // Run assertions on the response
+
+          expect(err).to.be.null;
+
+          expect(responseStatus).to.equal(200);
+
+          expect(responseBody)
+            .to.be.an('array')
+            .that.has.lengthOf(0);
+
+          done();
+        });
+      });
+  });
 });
 
 describe('POST /api/recipe', function () {
@@ -163,10 +296,10 @@ describe('POST /api/recipe', function () {
     let reqBody = {
       instruction: 'Shake it, stir it, serve it up right',
       name: 'stealthy',
-      ingredients: [
-        { name: 'stealth' },
-        { name: 'cunning' },
-        { name: 'fortitude' }],
+      // ingredients: [
+      //   { name: 'stealth' },
+      //   { name: 'cunning' },
+      //   { name: 'fortitude' }],
       // image: 'https://www.thecocktaildb.com/images/media/drink/jfvyog1530108909.jpg'
     };
 
@@ -186,7 +319,10 @@ describe('POST /api/recipe', function () {
 
         expect(responseBody)
           .to.be.an('object')
-          .that.includes(reqBody);
+          .that.includes({
+            name: reqBody.name,
+            instruction: reqBody.instruction
+          });
 
         // The `done` function is used to end any asynchronous tests
         done();
