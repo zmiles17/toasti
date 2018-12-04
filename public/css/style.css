@@ -1,3 +1,4 @@
+@font-face { font-family: Argos; src: url('../css/fonts/ArgosLig.otf'); } 
 html {
     height: 100%;
 }
@@ -9,9 +10,9 @@ body {
 header {
     background-color: rgb(28,28,29);
     height: 50px;
-    font-family: "Open Sans", sans-serif;
     margin-bottom: 25px;
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
+    font-family: "Open Sans", sans-serif;
 }
 
 h2 {
@@ -19,7 +20,7 @@ h2 {
     float: left;
     color: white;
     margin-left: 25px;
-
+    font-family: "Dancing Script";
 }
 
 .add-recipe {
@@ -44,18 +45,22 @@ h2 {
 .image-container {
     display: grid;
     height: 300px;
-    background-position-y: 53%;
-    background-position-x: 237%;
-    background-blend-mode: lighten;
-    background-image: url(../assets/cocktail.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../assets/cocktail7.jpg);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
+    transition: all 0.9s linear;
 }
 
 h1 {
     color: white;
-    font-family: "Lora";
+    font-family: "Argos";
     font-size: 60px;
     text-align: center;
     align-self: center;
+    filter: unset;
+    text-shadow: rgb(0, 0, 0) 1px 2px 1px;
 }
 form {
     margin-top: 50px;
@@ -64,6 +69,7 @@ form {
 }
 ::placeholder{
     font-family: "Open Sans", sans-serif;
+    padding-left: 5px;
 }
 
 a{
