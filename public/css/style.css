@@ -23,6 +23,12 @@ h2 {
     font-family: "Dancing Script";
 }
 
+h2:hover {
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
+    color: red;
+}
+
 .add-recipe {
     background: none;
 	color: white;
@@ -39,20 +45,24 @@ h2 {
 
 .add-recipe:hover {
     color: rgb(73, 251, 53);
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
 }
 
 .submit-recipe {
     width: auto;
     justify-self: center;
-    background: lightgray;
+    border: none;
+    background: none;
     cursor: pointer;
     font-family: "Dancing Script";
     font-weight: 700;
     font-size: 30px;
-    border-radius: 5px;
 }
 .submit-recipe:hover {
     color: blue;
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
 }
 .data-message {
     font-family: "Dancing Script";
@@ -71,7 +81,8 @@ span {
 }
 
 .fab:hover {
-    opacity: 0.7;
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
 }
 
 footer {
