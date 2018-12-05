@@ -1,20 +1,21 @@
-//on submit, run search
-//search should traverse the database for character matches in ingredients
-//search should traverse the database for character matches in name
-//return the results : a list of json objects back- the name, the instructions, the ingredients, the rating
-//order the recipes by rating
-//render the results 
 $('document').ready(function () {
   const search = function () {
     const searchterm = $('.search-bar').val();
      fetch(`/api/recipe?q=${searchterm}`).then(function(res) {
-       return res.json();
+     return res.json();
      }).then(function (data) {
       const el = $('.search-results');
       el.empty();
-      data.forEach(function (recipe,index) {
-        const recipeEl = $('<div class="recipe">');
+      data.forEach(function (recipe) {
+        const recipeEl = $('<div class="info">');
         recipeEl.append(`<h3 class="recipe-title">${recipe.name}</h3>`);
+
+        //display name and stars on home page
+        //on click, redirect to search results page
+        //show each recipe inside div recipe container by using .show and .hide properties
+        //make each title a clickable link
+
+      
         recipeEl.append(`<p class="instruction-body">${recipe.instruction}</p>`);
 
         const ingredientsListEl = $(`<ul class="ingredient-list">`);
@@ -24,7 +25,7 @@ $('document').ready(function () {
         recipeEl.append(ingredientsListEl)
 
         el.append(recipeEl);
-      })
+      });
     })
   }
   $('.search-bar').keypress(function (e) {
