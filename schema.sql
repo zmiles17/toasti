@@ -42,8 +42,8 @@ INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`
 
 -- jack and coke
 INSERT INTO recipedb.recipes (`id`,`name`,`instruction`,`createdAt`,`updatedAt`) VALUES (5,'Jack and Coke','Mix all contents in a highball glass and stir gently.',NOW(),NOW());
-INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'2 oz Jack Daniels Tennessee Whiskey',NOW(),NOW(),4);
-INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'5 oz Coca Cola',NOW(),NOW(),4);
+INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'2 oz Jack Daniels Tennessee Whiskey',NOW(),NOW(),5);
+INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'5 oz Coca Cola',NOW(),NOW(),5);
 
 
 
