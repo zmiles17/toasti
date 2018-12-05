@@ -41,6 +41,10 @@ h2 {
     justify-self: center;
 }
 
+button{
+   width: fit-content; 
+}
+
 .image-container {
     display: grid;
     height: 300px;
@@ -59,9 +63,11 @@ h1 {
 }
 form {
     margin-top: 50px;
-    width: 100%;
+    width: 50%;
+    margin: 0 auto;
     display: grid;
 }
+
 ::placeholder{
     font-family: "Open Sans", sans-serif;
 }
@@ -93,4 +99,17 @@ h3 {
 
 p {
     line-height: 30px;
+}
+
+.btn-fa{
+    font-size: 18px;
+    color: blue;
+    vertical-align: middle;
+    background: none;
+    border:none;
+    padding:none;
+}
+
+.ingredient{
+    width: 100%;
 }
