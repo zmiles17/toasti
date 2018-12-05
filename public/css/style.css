@@ -48,7 +48,7 @@ h2 {
     font-size: 30px;
 }
 .submit-recipe:hover {
-    color: rgb(167, 168, 255);
+    color: rgb(73, 251, 53)
 }
 .data-message {
     font-family: "Dancing Script";
@@ -113,7 +113,7 @@ a{
     cursor: pointer;
 }
 a:hover {
-    color: rgb(167, 168, 255);
+    color: rgb(73, 251, 53);
 }
 input {
     border: black 1px solid;
