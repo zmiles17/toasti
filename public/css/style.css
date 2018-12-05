@@ -37,18 +37,22 @@ h2 {
     margin-top: 15px;
 }
 
+.add-recipe:hover {
+    color: rgb(73, 251, 53);
+}
+
 .submit-recipe {
-    margin-left: 20px;
-    justify-self: left;
-    border: none;
-    background: none;
+    width: 97%;
+    justify-self: center;
+    border: 1px solid gray;
+    background: lightgray;
     cursor: pointer;
     font-family: "Dancing Script";
     font-weight: 700;
     font-size: 30px;
 }
 .submit-recipe:hover {
-    color: rgb(73, 251, 53)
+    opacity: 0.7;
 }
 .data-message {
     font-family: "Dancing Script";
@@ -64,6 +68,10 @@ span {
 
 .fab {
     font-size: 30px;
+}
+
+.fab:hover {
+    opacity: 0.7;
 }
 
 footer {
@@ -112,9 +120,7 @@ a{
     color: inherit;
     cursor: pointer;
 }
-a:hover {
-    color: rgb(73, 251, 53);
-}
+
 input {
     border: black 1px solid;
     width: 97%;
