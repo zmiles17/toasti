@@ -7,6 +7,11 @@ $('document').ready(function () {
       const el = $('.search-results');
       el.empty();
       data.forEach(function (recipe) {
+        let theStars = recipe.TotalStars;
+        let theVotes = recipe.TotalVotes;
+
+        let avg = average(theStars,theVotes);
+        console.log(avg);
         const recipeEl = $('<div class="info">');
         recipeEl.append(`<h3 class="recipe-title">${recipe.name}</h3>`);
 

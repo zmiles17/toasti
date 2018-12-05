@@ -36,7 +36,7 @@ module.exports = function (app) {
       res.json(dbItem);
     });
   });
-  app.post("/api/recipe", function (req, res) {
+app.post("/api/recipe", function (req, res) {
     db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {
       res.json(dbRecipe);
     })
