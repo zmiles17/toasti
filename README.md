@@ -1,6 +1,8 @@
 ## toasti
 An application made for users to add, search, and rate cocktail recipes.
 
+https://toasti-app.herokuapp.com/
+
 ## Screenshots
 ![](public/assets/screenshot.png)
 
