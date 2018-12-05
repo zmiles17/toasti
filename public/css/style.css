@@ -42,17 +42,17 @@ h2 {
 }
 
 .submit-recipe {
-    width: 97%;
+    width: auto;
     justify-self: center;
-    border: 1px solid gray;
     background: lightgray;
     cursor: pointer;
     font-family: "Dancing Script";
     font-weight: 700;
     font-size: 30px;
+    border-radius: 5px;
 }
 .submit-recipe:hover {
-    opacity: 0.7;
+    color: blue;
 }
 .data-message {
     font-family: "Dancing Script";
