@@ -46,6 +46,16 @@ span {
     font-family: "Dancing Script";
 }
 
+.fab {
+    font-size: 30px;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+}
+
 .image-container {
     display: grid;
     height: 300px;
