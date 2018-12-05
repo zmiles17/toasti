@@ -38,8 +38,41 @@ h2 {
 }
 
 .submit-recipe {
-    width: fit-content;
-    justify-self: center;
+    margin-left: 20px;
+    justify-self: left;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: "Dancing Script";
+    font-weight: 700;
+    font-size: 30px;
+}
+
+.data-message {
+    font-family: "Dancing Script";
+    font-weight: 700;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+span {
+    font-family: "Dancing Script";
+}
+
+.fab {
+    font-size: 30px;
+}
+
+footer {
+    position: absolute;
+    bottom: 10px;
+    right: 50%;
+}
+
+.container {
+    height: 40%;
+    margin-top: 50px;
 }
 
 .image-container {
@@ -50,7 +83,7 @@ h2 {
     background-position: center;
     background-image: url(../assets/cocktail7.jpg);
     box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.75);
-    transition: all 0.9s linear;
+    transition: all 0.7s ease-out;
 }
 
 h1 {
