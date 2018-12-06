@@ -7,14 +7,25 @@ module.exports = function (app) {
       res.json(dbItem);
     });
   });
+
+  //**************gina code starts*****************************
   app.post("/api/recipe", function (req, res) {
-    console.log(req.body.ingredient);
+
+    let ingredients = req.body.ingredient;
+    //convert array of strings into array of objects
+    let ingredientList = [];
+ 
+    ingredients.forEach(element => {
+      ingredientList.push({name:element});
+    });
+    
     db.recipe.create({
       name: req.body.name,
       instruction: req.body.instruction,
-      ingredients: [ {name: 'Gin'}]
+      ingredients: ingredientList
     },{
       include:[db.ingredient]
-    })
-  })
+    });
+  });
+  //**************gina code ends*****************************
 }

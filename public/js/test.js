@@ -1,5 +1,5 @@
 
-//gina testing
+//****************Gina code starts*************************************
 // const expect = require('chai').expect;
 // const validateRecipe = require('./app.js').validateRecipe;
 //Unit Test
@@ -30,119 +30,122 @@ describe('validateRecipe', function() {
 
   });
 
-// // Functional/DOM/UI Test
-// describe('add recipe', function () {
-//     let server;
+// Functional/DOM/UI Test
+describe('add recipe', function () {
+    let server;
 
-//     before(function() {
-//         server = sinon.fakeServer.create(),
-//         server.respondWith('POST', '/recipe', [
-//             200, { 'Content-Type': 'application/json'}, JSON.stringify({data})
-//         ]);
-//     });
+    before(function() {
+        server = sinon.fakeServer.create(),
+        server.respondWith('POST', '/recipe', [
+            200, { 'Content-Type': 'application/json'}, JSON.stringify({data})
+        ]);
+    });
 
-//     after(function () {
-//         server.restore();
-//     })
+    after(function () {
+        server.restore();
+    })
 
-//     it('should add recipe on click', function () {
-//         // assign values for input boxes
-//         $('#recipeName').val('Screwdriver');
-//         $('#instruction').val('Mix vodka and orange juice');
-//         $('#ingredient').val('1 cup vodka');
-//         $('#Ingredient2').val('1 1/2 cups orange juice');
+    it('should add recipe on click', function () {
+        // assign values for input boxes
+        $('#recipeName').val('Screwdriver');
+        $('#instruction').val('Mix vodka and orange juice');
+        $('#ingredient').val('1 cup vodka');
+        $('#Ingredient2').val('1 1/2 cups orange juice');
 
-//         // mock server to handle Post
-//         server.respondWith('POST', '/recipe', [
-//             200, { 'Content-Type': 'application/json' }, JSON.stringify({result: 'success'})
-//           ]);
+        // mock server to handle Post
+        server.respondWith('POST', '/recipe', [
+            200, { 'Content-Type': 'application/json' }, JSON.stringify({result: 'success'})
+          ]);
       
-//         //button trigger
-//         $('#btnAddRecipe').trigger('click');
+        //button trigger
+        $('#btnAddRecipe').trigger('click');
 
-//         //get expect
-//         server.respond();
-//         expect($('#showResult').text()).to.equal('Successfully added!');
-//     })
+        //get expect
+        server.respond();
+        expect($('#showResult').text()).to.equal('Successfully added!');
+    })
 
-//     it('should not add existing recipe on click', function () {
-//         // assign values for input boxes
-//         $('#Name').val('Screwdriver');
-//         $('#Description').val('Mix vodka and orange juice');
-//         $('#Ingredient1').val('1 cup vodka');
-//         $('#Ingredient2').val('1 1/2 cups orange juice');
+    it('should not add existing recipe on click', function () {
+        // assign values for input boxes
+        $('#Name').val('Screwdriver');
+        $('#Description').val('Mix vodka and orange juice');
+        $('#Ingredient1').val('1 cup vodka');
+        $('#Ingredient2').val('1 1/2 cups orange juice');
 
-//         // mock server to handle Post
-//         server.respondWith('POST', '/recipe', [
-//             200, { 'Content-Type': 'application/json' }, JSON.stringify({result: 'error'})
-//           ]);
+        // mock server to handle Post
+        server.respondWith('POST', '/recipe', [
+            200, { 'Content-Type': 'application/json' }, JSON.stringify({result: 'error'})
+          ]);
       
-//         //button trigger
-//         $('#addRecipe').trigger('click');
+        //button trigger
+        $('#addRecipe').trigger('click');
 
-//         //get expect
-//         server.respond();
-//         expect($('#showResult').text()).to.equal('Oops, the recipe already exists! Try again.');
-//     })
+        //get expect
+        server.respond();
+        expect($('#showResult').text()).to.equal('Oops, the recipe already exists! Try again.');
+    })
 
-//     it('should add ingredient on click', function () {
+    it('should add ingredient on click', function () {
       
-//         //button trigger
-//         $('#btnAddIngredient').trigger('click');
+        //button trigger
+        $('#btnAddIngredient').trigger('click');
 
-//         //get Expect
-//         server.respond();
-//         expect($('.ingredient').length).to.be.gt(1);
-//     })
+        //get Expect
+        server.respond();
+        expect($('.ingredient').length).to.be.gt(1);
+    })
 
-//     it('should remove ingredient on click', function () {
+    it('should remove ingredient on click', function () {
       
-//         //button trigger
-//         $('#btnRemoveIngredient1').trigger('click');
+        //button trigger
+        $('#btnRemoveIngredient1').trigger('click');
 
-//         //get Expect
-//         server.respond();
-//         expect($('.ingredient').length).to.equal(1);
-//     })
-// })
+        //get Expect
+        server.respond();
+        expect($('.ingredient').length).to.equal(1);
+    })
+})
+//****************Gina code ends*************************************
 
-// describe('search', function () {
+describe('search', function () {
 
-//   let server;
+  let server;
 
-//   beforeEach(function () {
-//     server = sinon.fakeServer.create();
-//     total = 0;
-//   });
+  beforeEach(function () {
+    server = sinon.fakeServer.create();
+    total = 0;
+  });
 
-//   afterEach(function () {
-//     server.restore();
-//   });
+  afterEach(function () {
+    server.restore();
+  });
 
-//   it('should run search on click', function () {
+  it('should run search on click', function () {
 
-//     server.respondWith('GET', '/api/search', [
-//       200, { 'Content-Type': 'application/json' }, JSON.stringify({
-//         instruction: 'Stir into glass over ice, garnish and serve',
-//         name: 'Negroni',
-//         ingredients: [
-//             { name: '1 oz Gin' },
-//             { name: '1 oz Campari' },
-//             { name: '1 oz Sweet Vermouth' }],
-//         image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
-//       })
-//     ]);
+    server.respondWith('GET', '/api/search', [
+      200, { 'Content-Type': 'application/json' }, JSON.stringify({
+        instruction: 'Stir into glass over ice, garnish and serve',
+        name: 'Negroni',
+        ingredients: [
+            { name: '1 oz Gin' },
+            { name: '1 oz Campari' },
+            { name: '1 oz Sweet Vermouth' }],
+        image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
+      })
+    ]);
 
-//     $('#search').trigger('submit');
+    $('#search').trigger('submit');
 
-//     server.respond();
-//     expect($('#name-0').text()).to.equal('Negroni');
-//     expect($('#instruction-0').text()).to.equal('Stir into glass over ice, garnish and serve');
-//     expect($('#image-0').attr('src')).to.equal('https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg');
-//     expect($('#ingredient-0').html()).to.equal('<ul><li>1 oz Gin</li><li>1 oz Campari</li><li>1 oz Sweet Vermouth</li></ul>');
-//     //may need to go back in and redo the ul structure
-//   });
+    server.respond();
+    expect($('#name-0').text()).to.equal('Negroni');
+    expect($('#instruction-0').text()).to.equal('Stir into glass over ice, garnish and serve');
+    expect($('#image-0').attr('src')).to.equal('https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg');
+    expect($('#ingredient-0').html()).to.equal('<ul><li>1 oz Gin</li><li>1 oz Campari</li><li>1 oz Sweet Vermouth</li></ul>');
+    //may need to go back in and redo the ul structure
+  });
 
 
-// });
+});
+
+
 

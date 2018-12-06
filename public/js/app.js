@@ -1,8 +1,64 @@
-//search function should not be null
+//**************gina code starts*****************************
+const render = function(element, htmlStr){
+    $(element).append(htmlStr)
+}
 
-//search function should not allow integers
+//Add input field dynamically
+$('#btnAddIngredient').click(function (){
+    if($('.ingredient').length < 5){
+    let htmlStr = 
+    `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
+    render('#addIngredient', htmlStr);
+    }
+    // let ingredientsLength = ('.ingredient').length;
+    // $('.ingredient').each(function(){
+    //     if ($(this).val() !== ''){
+    //         let htmlStr = 
+    //          `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
+    //          render('#addIngredient', htmlStr);
+    //     }
+        // if (($(this).val() !== '') && (ingredientsLength < 5)){
+        //     let htmlStr = 
+        //      `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
+        //      render('#addIngredient', htmlStr);
+        // }else{
+        //     render('#addIngredient', "Please enter an ingredient.");
+        // }
+        //let ingredient = $(this).val().trim();
+        // if(ingredient != "")
+             //ingredients.push($(this).val());
+             //console.log(ingredients);
+    });
+    // ingredientList.forEach(e => {
+    //     if (e.val() !== ''){
+    //         let htmlStr = 
+    //         `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
+    //         render('#addIngredient', htmlStr);
+    //     }else{
+    //         render('#addIngredient', "Please enter an ingredient.");
+    //     }
+    // })
+    // if($('.ingredient').length < 5){
+        
+    //     if($('#ingredient').val() != ''){
+    //         let htmlStr = 
+    //         `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
+    //         render('#addIngredient', htmlStr);
+    //     }else{
+    //         render('#addIngredient', "Please enter an ingredient.");
+    //     }        
+    // }else{
+    // $('#btnAddIngredient').hide()
+    // render('#addIngredient', "You have entered 5 ingredients!");
+    // }
+//})
 
-//search function should not 
+//Remove input field from the front-end
+$(document).on('click', '.remove', function() {
+    let inputNeedToBeDeleted = $(this).parent();
+    inputNeedToBeDeleted.next().remove(); //remove <br />
+    inputNeedToBeDeleted.remove(); // then remove <span>
+})
 
 $('#frmAddRecipe').submit(function(e){
     e.preventDefault();
@@ -13,34 +69,13 @@ $('#frmAddRecipe').submit(function(e){
         let ingredient = $(this).val().trim();
         // if(ingredient != "")
              ingredients.push($(this).val());
+             //console.log(ingredients);
     });
 
     if(validateRecipe(name, instruction, ingredients)){
         addNewRecipe(name, instruction, ingredients)
     }
 })
-
-$('#btnAddIngredient').click(function createNewInput(){
-    let $newInputBox = $(
-        `<div class="ingredientSection"><input id="ingredient" placeholder="Ingredients" class="ingredient" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></div>`
-    )
-})
-//   // This function constructs a todo-item row
-//   function createNewRow(todo) {
-//     var $newInputRow = $(
-//       `<p class='list-group-item todo-item'>
-//       <button class='delete'><i ${todo.complete? "class='far fa-dot-circle btn-style'":"class='far fa-circle btn-style'"}></i></button>
-//       <span> ${todo.text}</span></p><br />`
-//     );
-
-//     $newInputRow.find("button.delete").data("id", todo.id);
-//     $newInputRow.find("input.edit").css("display", "none");
-//     $newInputRow.data("todo", todo);
-//     // if (todo.complete) {
-//     //   $newInputRow.find("span").css("text-decoration", "line-through");
-//     // }
-//     return $newInputRow;
-//   }
 
 const validateRecipe = function(name, instruction, ingredients) {
 
@@ -62,22 +97,35 @@ const validateRecipe = function(name, instruction, ingredients) {
     return true;
 }
 
-//validateRecipe('cocktail', 'mix well', ['Vodka', 'OJ']);
-
 const addNewRecipe = function(name, instruction, ingredients) {
     let recipe = {
         name: name,
         instruction: instruction,
         ingredient: ingredients
     };
-    $.post('/api/recipe', recipe)
-    .then(function(data){
-        console.log('data saved');
+    //console.log(recipe);
+    $.post('/api/recipe', recipe)   
+    .then(function(data){  
+        console.log(data); 
+        if(data.id) {
+            console.log(data.id);
+            $('#recipeName').val('');
+            $('#instruction').val('');           
+            $('.ingredient').val('');
+            $('#recipeName').focus();
+        }else{
+            render('#addIngredient', "error");
+        } 
+    //    console.log("The recipe successfully added!");
     })
-    // $.ajax({url: '/api/recipe', method: 'POST', data: recipe})
-    // .then(function(data){
-    //     console.log('data saved');
-    // })   
+    // .catch(function(err){
+    //     console.log(err);
+    // });
+    render('#showResult', "Thanks for your cocktail recipe.  It has been saved successfully!");
+
+    
 };
+
+//***************************gina code ends*************************************
 
 
