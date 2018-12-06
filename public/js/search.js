@@ -9,15 +9,13 @@ $('document').ready(function () {
       el.empty();
       data.forEach(function (recipe) {
         const recipeEl = $('<div class="info">');
-        recipeEl.append(`<h3 class="recipe-title">${recipe.name}</h3>`); //Christian's TotalStar class goes here
-        recipeEl.append(`<p class="instruction-body">${recipe.instruction}</p>`);
 
-        const ingredientsListEl = $(`<ul class="ingredient-list">`);
-        recipe.ingredients.forEach(function (ingredient) {
-          ingredientsListEl.append(`<li>${ingredient.name}</li>`);
-        });
+        const headerEl = $('<div class="recipe-header">');
+        headerEl.append(`<a href="/selected_recipe?id=${recipe.id} class="recipe-title">${recipe.name}</a>`); 
+        headerEl.append(`<span class="recipe-rating">${recipe.TotalStars || 0}</h3>`);//Christian's TotalStar class goes here
+      
+        recipeEl.append(headerEl);
         
-        recipeEl.append(ingredientsListEl)
         el.append(recipeEl);
       });
     })
