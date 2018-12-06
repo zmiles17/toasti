@@ -13,4 +13,8 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../public/html/search_results.html"));
     });
 
+    app.get("/selected_recipe", function(req,res){
+        res.sendFile(path.join(__dirname, "../public/html/selected_recipe.html"));
+    });
+
 };

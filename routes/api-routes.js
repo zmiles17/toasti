@@ -41,4 +41,14 @@ module.exports = function (app) {
       res.json(dbRecipe);
     })
   })
+  app.get('/api/recipe/:id', function (req, res) {
+    const id = req.params.id;
+    db.recipe.findById(id, {
+      include: [{
+        model: db.ingredient,
+      }]
+    }).then(function (dbItem) {
+      res.json(dbItem);
+    });
+  });
 }
