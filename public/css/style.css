@@ -5,7 +5,7 @@ html {
 
 body {
     height: 100%;
-    font-family: "Open Sans", sans-serif, "Font Awesome 5 Free; /* added by Gina */
+    font-family: "Open Sans", sans-serif;
 }
 
 header {
@@ -21,6 +21,7 @@ h2 {
     color: white;
     margin-left: 25px;
     font-family: "Dancing Script";
+    transition:  all 0.1s linear;
 }
 
 h2:hover {
@@ -28,6 +29,20 @@ h2:hover {
     transition:  all 0.1s linear;
     color: red;
 }
+button{
+    width: fit-content;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+ }
+ button:hover{
+     background-color: #ccc;
+ }
 
 .add-recipe {
     background: none;
@@ -41,16 +56,17 @@ h2:hover {
     font-size: 20px;
     margin-right: 25px;
     margin-top: 15px;
+    transition:  all 0.1s linear;
 }
 
-/* Zack's CSS */
 .add-recipe:hover {
+    background-color: rgb(28,28,29);
     color: rgb(73, 251, 53);
     transform: scale(1.05);
     transition:  all 0.1s linear;
 }
 
-.submit-recipe {
+/* .submit-recipe {
     width: auto;
     justify-self: center;
     border: 1px black solid;
@@ -60,12 +76,14 @@ h2:hover {
     font-family: "Dancing Script";
     font-weight: 700;
     font-size: 30px;
+    transition:  all 0.1s linear;
+
 }
 .submit-recipe:hover {
     color: blue;
     transform: scale(1.05);
     transition:  all 0.1s linear;
-}
+} */
 .data-message {
     font-family: "Dancing Script";
     font-weight: 700;
@@ -80,6 +98,7 @@ span {
 
 .fab {
     font-size: 30px;
+    transition:  all 0.1s linear;
 }
 
 .fab:hover {
@@ -96,6 +115,11 @@ footer {
 .container {
     height: 40%;
     margin-top: 50px;
+}
+
+.recipe-rating {
+    position: absolute;
+    right: 25px;
 }
 /* Zack's CSS ends */
 .image-container {
@@ -147,6 +171,23 @@ input {
     margin-left: 25px;
     margin-top: 30px;
     font-family: "Open Sans", sans-serif;
+}
+
+.search-columns {
+    display:-webkit-inline-box;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.recipe-column {
+    margin-left: 25px;
+    text-decoration: underline;
+}
+
+.rating-column {
+    position: absolute;
+    right: 25px;
+    text-decoration: underline;
 }
 
 h3 {
@@ -217,7 +258,7 @@ textarea{
     white-space: nowrap; 
 }
 
-button{
+/* #btnAddIngredient{
     width: fit-content;
     border: 1px solid #ccc;
     background-color: #eee;
@@ -228,9 +269,9 @@ button{
     cursor: pointer;
     outline:none;
  }
- button:hover{
+ #btnAddIngredient:hover{
      background-color: #ccc;
- }
+ } */
 
  input:focus{
     outline:none;
