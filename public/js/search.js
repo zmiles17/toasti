@@ -11,10 +11,10 @@ $('document').ready(function () {
         let theStars = recipe.TotalStars;
         let theVotes = recipe.TotalVotes;
 
-        let avg = average(theStars,theVotes);
-        console.log(avg);
+        let starRndr = average(theStars,theVotes);
+        console.log(starRndr);
         const recipeEl = $('<div class="info">');
-        recipeEl.append(`<h3 class="recipe-title">${recipe.name}</h3>`); //Christian's TotalStar class goes here
+        recipeEl.append(`<h3 class="recipe-title">${recipe.name}</h3><div class="star-out"><div class="star-in"></div></div>`); //Christian's TotalStar class goes here
         recipeEl.append(`<p class="instruction-body">${recipe.instruction}</p>`);
 
         const ingredientsListEl = $(`<ul class="ingredient-list">`);
