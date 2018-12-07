@@ -21,6 +21,7 @@ h2 {
     color: white;
     margin-left: 25px;
     font-family: "Dancing Script";
+    transition:  all 0.1s linear;
 }
 
 h2:hover {
@@ -55,6 +56,7 @@ button{
     font-size: 20px;
     margin-right: 25px;
     margin-top: 15px;
+    transition:  all 0.1s linear;
 }
 
 .add-recipe:hover {
@@ -64,6 +66,24 @@ button{
     transition:  all 0.1s linear;
 }
 
+/* .submit-recipe {
+    width: auto;
+    justify-self: center;
+    border: 1px black solid;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    font-family: "Dancing Script";
+    font-weight: 700;
+    font-size: 30px;
+    transition:  all 0.1s linear;
+
+}
+.submit-recipe:hover {
+    color: blue;
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
+} */
 .data-message {
     font-family: "Dancing Script";
     font-weight: 700;
@@ -78,6 +98,7 @@ span {
 
 .fab {
     font-size: 30px;
+    transition:  all 0.1s linear;
 }
 
 .fab:hover {
@@ -96,6 +117,11 @@ footer {
     margin-top: 50px;
 }
 
+.recipe-rating {
+    position: absolute;
+    right: 25px;
+}
+/* Zack's CSS ends */
 .image-container {
     display: grid;
     height: 300px;
@@ -145,6 +171,23 @@ input {
     margin-left: 25px;
     margin-top: 30px;
     font-family: "Open Sans", sans-serif;
+}
+
+.search-columns {
+    display:-webkit-inline-box;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.recipe-column {
+    margin-left: 25px;
+    text-decoration: underline;
+}
+
+.rating-column {
+    position: absolute;
+    right: 25px;
+    text-decoration: underline;
 }
 
 h3 {
@@ -213,7 +256,20 @@ textarea{
     white-space: nowrap; 
 }
 
-
+/* #btnAddIngredient{
+    width: fit-content;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+ }
+ #btnAddIngredient:hover{
+     background-color: #ccc;
+ } */
 
  input:focus{
     outline:none;

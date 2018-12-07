@@ -11,14 +11,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
         crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery.js"></script>  
     <title>Add a Cocktail Recipe</title>
 </head>
 
 <body>
     <header>
-        <h2><a href="/">toasti</a></h2>
+        <h2><a href="/">toasti <i class="fas fa-cocktail"></i></a></h2>
+        <button class="add-recipe"><a href="/add_recipe"><i class="fas fa-plus"></i> add a recipe</a></button>
     </header>
     
     <form id="frmAddRecipe" class="inputForm">
@@ -39,6 +39,9 @@
         <button id="btnAddRecipe" type="submit" class="submit-recipe">Add Recipe</button>
         <div id="showResult" class="data-message"></div>
     </form>
+    <footer>
+        <a href="https://github.com/zmiles17/toasti" target="_blank"><i class="fab fa-github-square"></i></a>
+    </footer>
     
 </body>
 <script src="../js/app.js"></script> 
