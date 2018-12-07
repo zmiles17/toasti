@@ -36,19 +36,39 @@ module.exports = function (app) {
       res.json(dbItem);
     });
   });
+
+  //**************gina code starts*****************************
   app.post("/api/recipe", function (req, res) {
-    db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {
-      res.json(dbRecipe);
-    })
-  })
-  app.get('/api/recipe/:id', function (req, res) {
-    const id = req.params.id;
-    db.recipe.findById(id, {
-      include: [{
-        model: db.ingredient,
-      }]
-    }).then(function (dbItem) {
-      res.json(dbItem);
+
+    let ingredients = req.body.ingredient;
+    //convert array of strings into array of objects
+    let ingredientList = [];
+ 
+    ingredients.forEach(element => {
+      ingredientList.push({name:element});
+    });
+    
+    db.recipe.create({
+      name: req.body.name,
+      instruction: req.body.instruction,
+      ingredients: ingredientList
+    },{
+      include:[db.ingredient]
     });
   });
+  //**************gina code ends*****************************
+    // db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {
+    //   res.json(dbRecipe);
+    // })
+  // })
+  // app.get('/api/recipe/:id', function (req, res) {
+  //   const id = req.params.id;
+  //   db.recipe.findById(id, {
+  //     include: [{
+  //       model: db.ingredient,
+  //     }]
+  //   }).then(function (dbItem) {
+  //     res.json(dbItem);
+  //   });
+  // });
 }
