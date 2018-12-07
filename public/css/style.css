@@ -159,6 +159,30 @@ p {
     line-height: 30px;
 }
 
+.star-out{
+    display: inline;
+    position: relative;
+    font-family: FontAwesome;
+}
+
+.star-out::before{
+    content: "\f006 \f006 \f006 \f006 \f006"; 
+}
+
+.star-in{
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.star-in::before{
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: gold;
+    margin-right: 15px;
+}
 
 
 /* gina CSS starts */
