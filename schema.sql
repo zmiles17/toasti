@@ -15,7 +15,7 @@ SHOW INDEX FROM recipedb.ingredients FROM `recipeDB`;
 -- data load
 
 -- vodka cranberry
-INSERT INTO recipedb.recipes (`id`,`name`,`instruction`,`createdAt`,`updatedAt`) VALUES (1,'Cape Cod','Stir into glass over ice, garnish and serve',NOW(),NOW());
+INSERT INTO recipedb.recipes (`id`,`name`,`instruction`,`TotalStars`,`TotalVotes`,`createdAt`,`updatedAt`) VALUES (1,'Cape Cod','Stir into glass over ice, garnish and serve',5,3,NOW(),NOW());
 INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'1 oz Vodka',NOW(),NOW(),1);
 INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'5 oz Cranberry Juice',NOW(),NOW(),1);
 INSERT INTO recipedb.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'1 Lime wedge',NOW(),NOW(),1);

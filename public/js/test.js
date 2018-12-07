@@ -1,3 +1,19 @@
+const expect = require('chai').expect;
+const app = require('./app.js');
+
+//christian test
+
+//Unit
+describe('average', function(){
+    it('should return the average of ratings for recipe', function(){
+        expect(app.average(4)).to.equal(4);
+    });
+})
+
+//DOM/UI
+// describe('ratingRender', function(){
+//     it('should ')
+// })
 
 //****************Gina code starts*************************************
 // const expect = require('chai').expect;
