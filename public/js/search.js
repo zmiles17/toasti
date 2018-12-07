@@ -14,15 +14,10 @@ $('document').ready(function () {
         let starRndr = average(theStars,theVotes);
         console.log(starRndr);
         const recipeEl = $('<div class="info">');
-<<<<<<< HEAD
-        recipeEl.append(`<h3 class="recipe-title">${recipe.name}</h3><div class="star-out"><div class="star-in"></div></div>`); //Christian's TotalStar class goes here
-        recipeEl.append(`<p class="instruction-body">${recipe.instruction}</p>`);
-=======
->>>>>>> master
 
         const headerEl = $('<div class="recipe-header">');
         headerEl.append(`<a href="/selected_recipe?id=${recipe.id} class="recipe-title">${recipe.name}</a>`); 
-        headerEl.append(`<span class="recipe-rating">${recipe.TotalStars || 0}</h3>`);//Christian's TotalStar class goes here
+        headerEl.append(`<span class="recipe-rating"><div class="star-out"><div class="star-in"></div></div></span>`);//Christian's TotalStar class goes here
       
         recipeEl.append(headerEl);
         
