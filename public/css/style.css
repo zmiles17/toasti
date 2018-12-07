@@ -5,7 +5,7 @@ html {
 
 body {
     height: 100%;
-    font-family: "Open Sans", sans-serif; /* added by Gina */
+    font-family: "Open Sans", sans-serif, "Font Awesome 5 Free; /* added by Gina */
 }
 
 header {
@@ -162,11 +162,13 @@ p {
 .star-out{
     display: inline;
     position: relative;
-    font-family: FontAwesome;
 }
 
 .star-out::before{
-    content: "\f006 \f006 \f006 \f006 \f006"; 
+    font-family: "Font Awesome\ 5 Free";
+    font-weight: 900;
+    content: "\f005 \f005 \f005 \f005 \f005"; 
+
 }
 
 .star-in{
@@ -179,7 +181,7 @@ p {
 }
 
 .star-in::before{
-    content: "\f005 \f005 \f005 \f005 \f005";
+    content: "\f006 \f006 \f006 \f006 \f006";
     color: gold;
     margin-right: 15px;
 }
