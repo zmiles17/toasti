@@ -1,8 +1,20 @@
 
-//gina testing
-
+//****************Gina code starts*************************************
+// const expect = require('chai').expect;
+// const validateRecipe = require('./app.js').validateRecipe;
 //Unit Test
+
 describe('validateRecipe', function() {
+    it('should return false if name is not a string ', function() {
+        expect(validateRecipe(123,'mix ingredients', ['vodka','OJ'])).to.equal(false);
+    });
+    it('should return false if instruction is not a string ', function() {
+        expect(validateRecipe('Screwdriver', [] , ['vodka','OJ'])).to.equal(false);
+    });
+    it('should return false if ingrdient is not an [] ', function() {
+        expect(validateRecipe('Screwdriver','mix ingredients', 'OJ')).to.equal(false);
+    });
+
     it('should return false if name is empty ', function() {
         expect(validateRecipe('','mix ingredients', ['vodka','OJ'])).to.equal(false);
     });
@@ -11,6 +23,9 @@ describe('validateRecipe', function() {
     });
     it('should return false if ingrdient is empty ', function() {
         expect(validateRecipe('Screwdriver','mix ingredients', [])).to.equal(false);
+    });
+    it('should return true for if above criteria are met ', function() {
+        expect(validateRecipe('Screwdriver','mix ingredients', ['vodka','OJ'])).to.equal(true);
     });
 
   });
@@ -32,9 +47,9 @@ describe('add recipe', function () {
 
     it('should add recipe on click', function () {
         // assign values for input boxes
-        $('#Name').val('Screwdriver');
-        $('#Description').val('Mix vodka and orange juice');
-        $('#Ingredient1').val('1 cup vodka');
+        $('#recipeName').val('Screwdriver');
+        $('#instruction').val('Mix vodka and orange juice');
+        $('#ingredient').val('1 cup vodka');
         $('#Ingredient2').val('1 1/2 cups orange juice');
 
         // mock server to handle Post
@@ -43,7 +58,7 @@ describe('add recipe', function () {
           ]);
       
         //button trigger
-        $('#addRecipe').trigger('click');
+        $('#btnAddRecipe').trigger('click');
 
         //get expect
         server.respond();
@@ -73,7 +88,7 @@ describe('add recipe', function () {
     it('should add ingredient on click', function () {
       
         //button trigger
-        $('#addIngredient').trigger('click');
+        $('#btnAddIngredient').trigger('click');
 
         //get Expect
         server.respond();
@@ -83,17 +98,14 @@ describe('add recipe', function () {
     it('should remove ingredient on click', function () {
       
         //button trigger
-        $('#removeIngredient1').trigger('click');
+        $('#btnRemoveIngredient1').trigger('click');
 
         //get Expect
         server.respond();
         expect($('.ingredient').length).to.equal(1);
     })
-
-
-
-
 })
+//****************Gina code ends*************************************
 
 describe('search', function () {
 
@@ -134,4 +146,6 @@ describe('search', function () {
 
 
 });
+
+
 
