@@ -5,7 +5,7 @@ html {
 
 body {
     height: 100%;
-    font-family: "Open Sans", sans-serif; /* added by Gina */
+    font-family: "Open Sans", sans-serif;
 }
 
 header {
@@ -29,6 +29,20 @@ h2:hover {
     transition:  all 0.1s linear;
     color: red;
 }
+button{
+    width: fit-content;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+ }
+ button:hover{
+     background-color: #ccc;
+ }
 
 .add-recipe {
     background: none;
@@ -45,14 +59,14 @@ h2:hover {
     transition:  all 0.1s linear;
 }
 
-/* Zack's CSS */
 .add-recipe:hover {
+    background-color: rgb(28,28,29);
     color: rgb(73, 251, 53);
     transform: scale(1.05);
     transition:  all 0.1s linear;
 }
 
-.submit-recipe {
+/* .submit-recipe {
     width: auto;
     justify-self: center;
     border: 1px black solid;
@@ -69,7 +83,7 @@ h2:hover {
     color: blue;
     transform: scale(1.05);
     transition:  all 0.1s linear;
-}
+} */
 .data-message {
     font-family: "Dancing Script";
     font-weight: 700;
@@ -242,7 +256,7 @@ textarea{
     white-space: nowrap; 
 }
 
-#btnAddIngredient{
+/* #btnAddIngredient{
     width: fit-content;
     border: 1px solid #ccc;
     background-color: #eee;
@@ -255,7 +269,7 @@ textarea{
  }
  #btnAddIngredient:hover{
      background-color: #ccc;
- }
+ } */
 
  input:focus{
     outline:none;
