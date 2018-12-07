@@ -36,13 +36,6 @@ module.exports = function (app) {
       res.json(dbItem);
     });
   });
-<<<<<<< HEAD
-app.post("/api/recipe", function (req, res) {
-    db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {
-      res.json(dbRecipe);
-    })
-  })
-=======
 
   //**************gina code starts*****************************
   app.post("/api/recipe", function (req, res) {
@@ -68,7 +61,6 @@ app.post("/api/recipe", function (req, res) {
     //   res.json(dbRecipe);
     // })
   // })
->>>>>>> master
   app.get('/api/recipe/:id', function (req, res) {
     const id = req.params.id;
     db.recipe.findById(id, {
