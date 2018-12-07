@@ -123,15 +123,15 @@ describe('search', function () {
   it('should run search on click', function () {
 
     server.respondWith('GET', '/api/search', [
-      200, { 'Content-Type': 'application/json' }, JSON.stringify({
+      200, { 'Content-Type': 'application/json' }, JSON.stringify([{
         instruction: 'Stir into glass over ice, garnish and serve',
         name: 'Negroni',
         ingredients: [
             { name: '1 oz Gin' },
             { name: '1 oz Campari' },
             { name: '1 oz Sweet Vermouth' }],
-        image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
-      })
+        // image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
+      }])
     ]);
 
     $('#search').trigger('submit');
