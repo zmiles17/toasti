@@ -54,21 +54,28 @@ module.exports = function (app) {
       ingredients: ingredientList
     },{
       include:[db.ingredient]
-    });
+    }).then(function (result) {
+      res.json(result);
+    }).catch(function (err) {
+      if(err.message == 'Validation error')
+        res.json({success:false, reason:'The cocktail name already exists.'})
+      else
+        res.json({ success: false, reason: 'error' });
+  });
   });
   //**************gina code ends*****************************
     // db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {
     //   res.json(dbRecipe);
     // })
-  // })
-  // app.get('/api/recipe/:id', function (req, res) {
-  //   const id = req.params.id;
-  //   db.recipe.findById(id, {
-  //     include: [{
-  //       model: db.ingredient,
-  //     }]
-  //   }).then(function (dbItem) {
-  //     res.json(dbItem);
-  //   });
-  // });
+  
+  app.get('/api/recipe/:id', function (req, res) {
+    const id = req.params.id;
+    db.recipe.findById(id, {
+      include: [{
+        model: db.ingredient,
+      }]
+    }).then(function (dbItem) {
+      res.json(dbItem);
+    });
+  });
 }

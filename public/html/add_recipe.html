@@ -29,15 +29,16 @@
         </div>
         
         <div id="ingredientSection">
-            <label>Ingredients (one ingredient per input box - max 5): </label>
-            <span class="noBreak"><input id="ingredient" placeholder="e.g. 1 oz of Vodka" class="addRecipeInput ingredient" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span>
+            <label>Ingredients (one ingredient per input box - max 5): </label>           
+            <div id="addIngredient">
+                <span class="noBreak"><input id="ingredient" placeholder="e.g. 1 oz of Vodka" class="addRecipeInput ingredient" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span>
+            </div>
         </div>    
-        <div id="addIngredient">
-            
-        </div>
+
         <button id="btnAddIngredient" type="text">Add more ingredient</button>
-        <button id="btnAddRecipe" type="submit" class="submit-recipe">Add Recipe</button>
         <div id="showResult" class="data-message"></div>
+        <button id="btnAddRecipe" type="submit" class="submit-recipe">Add Recipe</button>
+        
     </form>
     
 </body>
