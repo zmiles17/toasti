@@ -8,7 +8,7 @@ $('document').ready(function () {
       if (data.length === 0) {
         $(".recipe-column").empty();
         $(".rating-column").empty();
-        $(".search-results").append("<p class='search-results-msg'>No search results found. </p>")
+        $(".search-results").append("<p class='search-results-msg'>No search results found.</p>")
       } else {
       const el = $('.search-results');
       el.empty();
