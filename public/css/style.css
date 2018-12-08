@@ -112,6 +112,22 @@ footer {
     right: 50%;
 }
 
+.thumbnail {
+    border-radius: 50px;
+    height: 200px;
+    width: 200px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 23px 5px rgba(0,0,0,0.75);
+}
+
+#instruction, #ingredient {
+    border: black solid 1px;
+}
+
+#recipe-title:hover {
+    color: initial;
+    text-decoration: none;
+}
 .container {
     height: 40%;
     margin-top: 50px;
