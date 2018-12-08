@@ -147,7 +147,7 @@ footer {
 .search-results-msg {
     text-align: center;
     font-size: 30px;
-    font-family: "Dancing Script"
+    font-family: "Argos"
 }
 /* Zack's CSS ends */
 .image-container {
@@ -343,6 +343,7 @@ textarea{
     margin-top: 20px;
     color: green;
     text-align: center;
+    font-family: "Argos";
 }
 
 /* gina CSS ends */
