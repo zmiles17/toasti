@@ -143,6 +143,10 @@ footer {
     position: absolute;
     right: 25px;
 }
+
+.search-results-msg {
+    text-align: center;
+}
 /* Zack's CSS ends */
 .image-container {
     display: grid;

@@ -5,6 +5,11 @@ $('document').ready(function () {
     fetch(`/api/recipe?q=${searchterm}`).then(function (res) {
       return res.json();
     }).then(function (data) {
+      if (data.length === 0) {
+        $(".recipe-column").empty();
+        $(".rating-column").empty();
+        $(".search-results").append("<p class='search-results-msg'>No search results found. </p>")
+      } else {
       const el = $('.search-results');
       el.empty();
       data.forEach(function (recipe) {
@@ -23,6 +28,7 @@ $('document').ready(function () {
         
         el.append(recipeEl);
       });
+    }
     })
   }
   search();
