@@ -201,13 +201,15 @@ p {
 }
 
 .star-out{
-    display: inline;
+    display: inline-block;
     position: relative;
-    font-family: FontAwesome;
 }
 
 .star-out::before{
-    content: "\f006 \f006 \f006 \f006 \f006"; 
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f005 \f005 \f005 \f005 \f005"; 
+
 }
 
 .star-in{
@@ -220,7 +222,9 @@ p {
 }
 
 .star-in::before{
+    font-family: "Font Awesome 5 Free";
     content: "\f005 \f005 \f005 \f005 \f005";
+    font-weight: 900;
     color: gold;
     margin-right: 15px;
 }
