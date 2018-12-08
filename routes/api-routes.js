@@ -61,7 +61,7 @@ module.exports = function (app) {
         res.json({success:false, reason:'The cocktail name already exists.'})
       else
         res.json({ success: false, reason: 'error' });
-  });
+    });
   });
   //**************gina code ends*****************************
     // db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {

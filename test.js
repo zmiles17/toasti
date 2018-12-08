@@ -3,6 +3,8 @@ const chaiHttp = require('chai-http');
 const server = require('./server');
 const db = require('./models');
 const expect = chai.expect;
+const routes = require('./routes/api-routes');
+
 
 // Setting up the chai http plugin
 chai.use(chaiHttp);

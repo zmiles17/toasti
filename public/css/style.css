@@ -6,6 +6,7 @@ html {
 body {
     height: 100%;
     font-family: "Open Sans", sans-serif;
+    background: whitesmoke;
 }
 
 header {
@@ -21,6 +22,7 @@ h2 {
     color: white;
     margin-left: 25px;
     font-family: "Dancing Script";
+    transition:  all 0.1s linear;
 }
 
 h2:hover {
@@ -55,6 +57,7 @@ button{
     font-size: 20px;
     margin-right: 25px;
     margin-top: 15px;
+    transition:  all 0.1s linear;
 }
 
 .add-recipe:hover {
@@ -64,6 +67,24 @@ button{
     transition:  all 0.1s linear;
 }
 
+/* .submit-recipe {
+    width: auto;
+    justify-self: center;
+    border: 1px black solid;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    font-family: "Dancing Script";
+    font-weight: 700;
+    font-size: 30px;
+    transition:  all 0.1s linear;
+
+}
+.submit-recipe:hover {
+    color: blue;
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
+} */
 .data-message {
     font-family: "Dancing Script";
     font-weight: 700;
@@ -78,6 +99,7 @@ span {
 
 .fab {
     font-size: 30px;
+    transition:  all 0.1s linear;
 }
 
 .fab:hover {
@@ -91,11 +113,37 @@ footer {
     right: 50%;
 }
 
+.thumbnail {
+    border-radius: 50px;
+    height: 200px;
+    width: 200px;
+    margin-top: 50px;
+    box-shadow: 0px 0px 23px 5px rgba(0,0,0,0.75);
+}
+
+#instruction, #ingredient {
+    border: black solid 1px;
+}
+
+#recipe-title:hover {
+    color: initial;
+    text-decoration: none;
+}
 .container {
     height: 40%;
     margin-top: 50px;
 }
 
+.recipe-title:hover {
+    text-decoration: underline;
+    color: blue;
+}
+
+.recipe-rating {
+    position: absolute;
+    right: 25px;
+}
+/* Zack's CSS ends */
 .image-container {
     display: grid;
     height: 300px;
@@ -143,8 +191,26 @@ input {
 
 .info {
     margin-left: 25px;
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-family: "Open Sans", sans-serif;
+}
+
+.search-columns {
+    display:-webkit-inline-box;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.recipe-column {
+    margin-left: 25px;
+    text-decoration: underline;
+}
+
+.rating-column {
+    position: absolute;
+    right: 25px;
+    text-decoration: underline;
 }
 
 h3 {
@@ -157,6 +223,34 @@ p {
     line-height: 30px;
 }
 
+.star-out{
+    display: inline-block;
+    position: relative;
+}
+
+.star-out::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "\f005 \f005 \f005 \f005 \f005"; 
+
+}
+
+.star-in{
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.star-in::before{
+    font-family: "Font Awesome 5 Free";
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-weight: 900;
+    color: gold;
+    margin-right: 15px;
+}
 
 
 /* gina CSS starts */
@@ -189,7 +283,20 @@ textarea{
     white-space: nowrap; 
 }
 
-
+/* #btnAddIngredient{
+    width: fit-content;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+ }
+ #btnAddIngredient:hover{
+     background-color: #ccc;
+ } */
 
  input:focus{
     outline:none;
