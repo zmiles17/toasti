@@ -6,6 +6,7 @@ html {
 body {
     height: 100%;
     font-family: "Open Sans", sans-serif;
+    background: whitesmoke;
 }
 
 header {
@@ -190,13 +191,14 @@ input {
 
 .info {
     margin-left: 25px;
-    margin-top: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     font-family: "Open Sans", sans-serif;
 }
 
 .search-columns {
     display:-webkit-inline-box;
-    margin-top: 50px;
+    margin-top: 10px;
     font-weight: bold;
 }
 
