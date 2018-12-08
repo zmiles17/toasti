@@ -5,6 +5,7 @@ html {
 
 body {
     height: 100%;
+    font-family: "Open Sans", sans-serif;
 }
 
 header {
@@ -12,7 +13,6 @@ header {
     height: 50px;
     margin-bottom: 25px;
     box-shadow: 0px 2px 2px 0px rgba(0,0,0,0.75);
-    font-family: "Open Sans", sans-serif;
 }
 
 h2 {
@@ -21,7 +21,28 @@ h2 {
     color: white;
     margin-left: 25px;
     font-family: "Dancing Script";
+    transition:  all 0.1s linear;
 }
+
+h2:hover {
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
+    color: red;
+}
+button{
+    width: fit-content;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+ }
+ button:hover{
+     background-color: #ccc;
+ }
 
 .add-recipe {
     background: none;
@@ -35,19 +56,34 @@ h2 {
     font-size: 20px;
     margin-right: 25px;
     margin-top: 15px;
+    transition:  all 0.1s linear;
 }
 
-.submit-recipe {
-    margin-left: 20px;
-    justify-self: left;
-    border: none;
+.add-recipe:hover {
+    background-color: rgb(28,28,29);
+    color: rgb(73, 251, 53);
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
+}
+
+/* .submit-recipe {
+    width: auto;
+    justify-self: center;
+    border: 1px black solid;
+    border-radius: 5px;
     background: none;
     cursor: pointer;
     font-family: "Dancing Script";
     font-weight: 700;
     font-size: 30px;
-}
+    transition:  all 0.1s linear;
 
+}
+.submit-recipe:hover {
+    color: blue;
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
+} */
 .data-message {
     font-family: "Dancing Script";
     font-weight: 700;
@@ -62,6 +98,12 @@ span {
 
 .fab {
     font-size: 30px;
+    transition:  all 0.1s linear;
+}
+
+.fab:hover {
+    transform: scale(1.05);
+    transition:  all 0.1s linear;
 }
 
 footer {
@@ -75,6 +117,11 @@ footer {
     margin-top: 50px;
 }
 
+.recipe-rating {
+    position: absolute;
+    right: 25px;
+}
+/* Zack's CSS ends */
 .image-container {
     display: grid;
     height: 300px;
@@ -100,6 +147,7 @@ form {
     width: 100%;
     display: grid;
 }
+
 ::placeholder{
     font-family: "Open Sans", sans-serif;
     padding-left: 5px;
@@ -110,8 +158,9 @@ a{
     color: inherit;
     cursor: pointer;
 }
+
 input {
-    border: black 1px solid;
+    border:black 1px solid;
     width: 97%;
     height: 30px;
     justify-self: center;
@@ -124,6 +173,23 @@ input {
     font-family: "Open Sans", sans-serif;
 }
 
+.search-columns {
+    display:-webkit-inline-box;
+    margin-top: 50px;
+    font-weight: bold;
+}
+
+.recipe-column {
+    margin-left: 25px;
+    text-decoration: underline;
+}
+
+.rating-column {
+    position: absolute;
+    right: 25px;
+    text-decoration: underline;
+}
+
 h3 {
     margin-bottom: 30px;
     font-weight: bold;
@@ -133,3 +199,123 @@ h3 {
 p {
     line-height: 30px;
 }
+
+.star-out{
+    display: inline;
+    position: relative;
+    font-family: FontAwesome;
+}
+
+.star-out::before{
+    content: "\f006 \f006 \f006 \f006 \f006"; 
+}
+
+.star-in{
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+}
+
+.star-in::before{
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: gold;
+    margin-right: 15px;
+}
+
+
+/* gina CSS starts */
+
+.inputForm {
+    margin-top: 60px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.addRecipeInput{
+    border: #ccc 1px solid;
+    height: 30px;
+    justify-self: center;
+    margin-bottom: 15px;
+}
+
+textarea{
+    outline: none;
+    width: 97%;
+    height: 50px;
+    overflow: auto;
+}
+
+#ingredientSection, #addIngredient{
+    width: 400px;
+}
+.noBreak{
+    overflow: hidden;
+    white-space: nowrap; 
+}
+
+/* #btnAddIngredient{
+    width: fit-content;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    padding: 10px 25px;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    outline:none;
+ }
+ #btnAddIngredient:hover{
+     background-color: #ccc;
+ } */
+
+ input:focus{
+    outline:none;
+ }
+
+.submit-recipe {
+    width: fit-content;
+    justify-self: center;
+    margin-top:20px;
+    background-color: black;
+    color: white;
+}
+
+.submit-recipe:hover{
+    border:3px solid gray;
+    background-color: black;
+    color: white;
+}
+
+
+.btn-fa{
+    font-size: 18px;
+    color: #bbb;
+    vertical-align: middle;
+    background: none;
+    border:none;
+    padding:none;
+    padding-left: 10px;
+}
+.btn-fa:hover{
+    color:gray;
+    cursor: pointer;
+    background: none;
+    border:none;
+    padding:none;
+}
+#showResult{
+    margin-top: 20px;
+    color: green;
+    text-align: center;
+}
+
+/* gina CSS ends */
+
+
+
+
+
+
