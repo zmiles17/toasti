@@ -6,12 +6,28 @@ const average = function(allStars, allVotes){
     return result;
 }
 
+const rating = function(event){
+    event.preventDefault();
 
-const newAverage = function(newStars, allStars, allVotes){
-    allVotes++;
-    let sum = newStars + allStars;
-    let theAvg = Math.round(sum/allVotes);
-    let result = theAvg * 10;
+    let selected = $(this).index();
+    let starRng = document.querySelectorAll('.thestar');
+    let isSelected = false;
+    let num = 0;
 
-    return result;
+    $.each(starRng, function (index, thestar) {
+        //console.log(thestar)
+        if (isSelected) {
+            $(thestar).removeClass('rated');
+        }
+        else {
+            $(thestar).addClass('rated');
+        }
+        if (index === selected) {
+            isSelected = true;
+            num = index + 1;
+        }
+    });
+
+    $('.recipe-rating').attr('star-rating', num);
+
 }

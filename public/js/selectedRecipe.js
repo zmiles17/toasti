@@ -6,6 +6,7 @@ $('document').ready(function () {
     fetch(`/api/recipe/${id}`).then(function (res) {
       return res.json();
     }).then(function (recipe) {
+      
       const recipeName = recipe.name;
       axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${recipeName}`).then(function(data){
         var recipeThumb;
@@ -15,7 +16,14 @@ $('document').ready(function () {
         
         const headerEl = $('<div class="recipe-header">');
         headerEl.append(`<h3 class="recipe-title" id="recipe-title">${recipe.name}</h3>`);
-        headerEl.append(`<span class="recipe-rating">${recipe.TotalStars || 0}</h3>`);
+        headerEl.append(`<span class="recipe-rating" star-rating="1">
+      
+        <button class="theclick"><span class="thestar"></span></button>
+        <button class="theclick"><span class="thestar"></span></button>
+        <button class="theclick"><span class="thestar"></span></button>
+        <button class="theclick"><span class="thestar"></span></button>
+        <button class="theclick"><span class="thestar"></span></button>
+        </span>`);
         
         const recipeEl = $('<div class="info">');
         recipeEl.append(headerEl);
@@ -29,6 +37,7 @@ $('document').ready(function () {
         recipeEl.append(ingredientsListEl);
         if (data.data.drinks !== null) recipeEl.append(`<img src=${recipeThumb} class="thumbnail">`);
         el.append(recipeEl);
+        $('.theclick').on('click', rating);
       })
       })
     }

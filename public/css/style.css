@@ -97,6 +97,11 @@ span {
     font-family: "Dancing Script";
 }
 
+#welcome-title {
+    font-size: -webkit-xxx-large;
+    font-weight: 400;
+}
+
 .fab {
     font-size: 30px;
     transition:  all 0.1s linear;
@@ -108,7 +113,7 @@ span {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 50%;
 }
@@ -142,6 +147,12 @@ footer {
 .recipe-rating {
     position: absolute;
     right: 25px;
+}
+
+.search-results-msg {
+    text-align: center;
+    font-size: 30px;
+    font-family: "Argos"
 }
 /* Zack's CSS ends */
 .image-container {
@@ -246,10 +257,38 @@ p {
 
 .star-in::before{
     font-family: "Font Awesome 5 Free";
-    content: "\f005 \f005 \f005 \f005 \f005";
+    content: "\f005";
     font-weight: 900;
     color: gold;
     margin-right: 15px;
+}
+
+.thestar{
+    display: inline-block;
+    position: relative;
+}
+
+.thestar::before{
+    font-family: "Font Awesome 5 Free";
+    content: "\f005";
+    font-weight: 900;
+}
+
+.thestar:hover{
+    color: gold;
+}
+
+.thestar.rated::before{
+    font-family: "Font Awesome 5 Free";
+    content: "\f005";
+    font-weight: 900;
+    color: gold;
+}
+
+button.theclick{
+    background: none;
+    border: none;
+    padding: 2px 2px;
 }
 
 
@@ -337,6 +376,7 @@ textarea{
     margin-top: 20px;
     color: green;
     text-align: center;
+    font-family: "Argos";
 }
 
 
