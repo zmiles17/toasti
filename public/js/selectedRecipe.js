@@ -10,7 +10,14 @@ $('document').ready(function () {
 
       const headerEl = $('<div class="recipe-header">');
       headerEl.append(`<h3 class="recipe-title">${recipe.name}</h3>`);
-      headerEl.append(`<span class="recipe-rating">${recipe.TotalStars || 0}</h3>`);
+      headerEl.append(`<span class="recipe-rating" star-rating="1">
+      
+      <button class="theclick"><span class="thestar"></span></button>
+      <button class="theclick"><span class="thestar"></span></button>
+      <button class="theclick"><span class="thestar"></span></button>
+      <button class="theclick"><span class="thestar"></span></button>
+      <button class="theclick"><span class="thestar"></span></button>
+      </span>`);
 
       const recipeEl = $('<div class="info">');
       recipeEl.append(headerEl);
@@ -23,6 +30,7 @@ $('document').ready(function () {
 
       recipeEl.append(ingredientsListEl);
       el.append(recipeEl);
+      $('.theclick').on('click', rating);
     })
   }
   search();
