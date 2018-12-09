@@ -6,12 +6,36 @@
   <title>Tests</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.css">
+  <style>
+      .app {
+        display: none;
+      }
+    </style>
 </head>
 <body>
+    <form id="frmAddRecipe" class="inputForm app">
+        <div>
+            <h3>Add a Cocktail Recipe</h3>
+            <label>Name: </label><input id="recipeName" placeholder="e.g. Screwdriver" class="recipe-name" required/>
+            <label>Instruction: </label><br /><textarea id="instruction" placeholder="e.g. Give a quick stir and garnish with a orange slice." required></textarea><br /><br />
+        </div>
+        
+        <div id="ingredientSection">
+            <label>Ingredients (one ingredient per input box - max 5): </label>           
+            <div id="addIngredient">
+                <span class="noBreak"><input id="ingredient" placeholder="e.g. 1 oz of Vodka" class="addRecipeInput ingredient" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span>
+            </div>
+        </div>    
+
+        <button id="btnAddIngredient" type="text">Add more ingredient</button>
+        <div id="showResult" class="data-message"></div>
+        <button id="btnAddRecipe" type="submit" class="submit-recipe">Add Recipe</button>
+        
+    </form>
   <div id="mocha"></div>
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <script src="./app.js"></script>
+  <!-- <script src="./app.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/5.2.0/mocha.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/4.2.0/chai.min.js"></script>
   <script src="https://sinonjs.org/releases/sinon-6.1.4.js"></script>
@@ -20,10 +44,10 @@
     mocha.reporter('html');
     const expect = chai.expect;
   </script>
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="../js/app.js"></script> 
+  <script src="../js/search.js"></script>
   <script src="../js/test.js"></script>
   <script>mocha.run();</script>
-  <script src="https://code.jquery.com/jquery.js"></script>
-<script src="../js/app.js"></script> 
-<script src="../js/search.js"></script>
 </body>
 </html>

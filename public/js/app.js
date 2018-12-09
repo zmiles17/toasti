@@ -2,6 +2,22 @@
 const render = function(element, htmlStr){
     $(element).append(htmlStr)
 }
+$('#recipeName').on("keydown",function (e) {
+    if (e.which == 9 || e.which == 13)  {
+        e.preventDefault();
+         $("#instruction").focus();
+    };  
+    $('#showResult').empty();    
+});
+
+$('#ingredientSection').on("keydown",'.ingredient',function (e) {
+    if (e.which == 9 || e.which == 13)  {
+        e.preventDefault();
+        if($('.ingredient').length < 5){
+            $('#btnAddIngredient').trigger("click");
+        }            
+    };  
+});
 
 //Add input field dynamically
 $('#btnAddIngredient').click(function (){
@@ -9,49 +25,9 @@ $('#btnAddIngredient').click(function (){
     let htmlStr = 
     `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
     render('#addIngredient', htmlStr);
+    $(".addRecipeInput").last().focus();
     }
-    // let ingredientsLength = ('.ingredient').length;
-    // $('.ingredient').each(function(){
-    //     if ($(this).val() !== ''){
-    //         let htmlStr = 
-    //          `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
-    //          render('#addIngredient', htmlStr);
-    //     }
-        // if (($(this).val() !== '') && (ingredientsLength < 5)){
-        //     let htmlStr = 
-        //      `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
-        //      render('#addIngredient', htmlStr);
-        // }else{
-        //     render('#addIngredient', "Please enter an ingredient.");
-        // }
-        //let ingredient = $(this).val().trim();
-        // if(ingredient != "")
-             //ingredients.push($(this).val());
-             //console.log(ingredients);
-    });
-    // ingredientList.forEach(e => {
-    //     if (e.val() !== ''){
-    //         let htmlStr = 
-    //         `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
-    //         render('#addIngredient', htmlStr);
-    //     }else{
-    //         render('#addIngredient', "Please enter an ingredient.");
-    //     }
-    // })
-    // if($('.ingredient').length < 5){
-        
-    //     if($('#ingredient').val() != ''){
-    //         let htmlStr = 
-    //         `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
-    //         render('#addIngredient', htmlStr);
-    //     }else{
-    //         render('#addIngredient', "Please enter an ingredient.");
-    //     }        
-    // }else{
-    // $('#btnAddIngredient').hide()
-    // render('#addIngredient', "You have entered 5 ingredients!");
-    // }
-//})
+})
 
 //Remove input field from the front-end
 $(document).on('click', '.remove', function() {
@@ -62,7 +38,7 @@ $(document).on('click', '.remove', function() {
 
 $('#frmAddRecipe').submit(function(e){
     e.preventDefault();
-    let name = $('#recipeName').val();
+    let name = $('#recipeName').val().toUpperCase();
     let instruction = $('#instruction').val();
     let ingredients = [];
     $('.ingredient').each(function(){
@@ -79,21 +55,21 @@ $('#frmAddRecipe').submit(function(e){
 
 const validateRecipe = function(name, instruction, ingredients) {
 
-    if ((typeof name || typeof instruction) != 'string' ) {       
-        console.log('All fields need to be a string!');
+    if ((typeof name != 'string' || typeof instruction != 'string')  ) {       
         return false;
     }
 
     if (!(Array.isArray(ingredients))) {       
-        console.log('ingredients need to be an array!');
         return false;
     }
 
-    if ((typeof name || typeof instruction || typeof ingredient) === '' ) {       
-        console.log('All fields are required!');
+    if ((name ==='' || instruction === '' )) {       
+        return false;
+    }; 
+    
+    if ((ingredients.length == 0 )) {       
         return false;
     };
-    
     return true;
 }
 
@@ -110,24 +86,17 @@ const addNewRecipe = function(name, instruction, ingredients) {
         if(data.id) {
             console.log(data.id);
             $('#recipeName').val('');
-            $('#instruction').val('');           
-            $('.ingredient').val('');
+            $('#instruction').val('');               
+            $('#addIngredient').empty();
+            $('#btnAddIngredient').trigger("click");
             $('#recipeName').focus();
+            render('#showResult', "Thanks for your cocktail recipe.  It has been saved successfully!");
         }else{
-            render('#addIngredient', "error");
+            render('#showResult', data.reason);
         } 
-    //    console.log("The recipe successfully added!");
-    })
-    // .catch(function(err){
-    //     console.log(err);
-    // });
-    render('#showResult', "Thanks for your cocktail recipe.  It has been saved successfully!");
-
-    
+    })    
 };
-
 //***************************gina code ends*************************************
-
 
 $('document').ready(function () {
     //this function is redirecting to the search-results.html
@@ -139,7 +108,6 @@ $('document').ready(function () {
             window.location = `/search_results?q=${encodeURIComponent(searchterm)}`;
         }
     }
-
     $('.search-bar').keypress(function (e) {
         if (e.which == 13) {//Enter key pressed
             e.preventDefault();
