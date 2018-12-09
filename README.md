@@ -5,7 +5,7 @@ An application made for users to add, search, and rate cocktail recipes.
 ![](public/assets/screenshot.png)
 
  ## Tech/framework used
-HTML/CSS, JavaScript, jQuery, MySQL, Sequelize.js, Node.js, Express, Mocha, Chai, Sinon
+HTML, CSS, JavaScript, jQuery, MySQL, Sequelize.js, Node.js, Express, Mocha, Chai, Sinon
 
  ## Installation
 You will need to run the MySQL server locally, so please install [MAMP](https://www.mamp.info/en/downloads/).
