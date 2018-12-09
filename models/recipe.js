@@ -19,7 +19,10 @@ module.exports = function (sequelize, DataTypes) {
     },
     TotalVotes: {
       type: DataTypes.INTEGER
-    } 
+    } ,
+    image: {
+    type: DataTypes.STRING
+    }
   });
   Recipe.associate = function (models) {
     Recipe.hasMany(models.ingredient);
