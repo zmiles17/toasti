@@ -5,7 +5,7 @@ const render = function(element, htmlStr){
 $('#recipeName').on("keydown",function (e) {
     if (e.which == 9 || e.which == 13)  {
         e.preventDefault();
-        $("#instruction").focus();
+         $("#instruction").focus();
     };  
     $('#showResult').empty();    
 });
@@ -55,20 +55,21 @@ $('#frmAddRecipe').submit(function(e){
 
 const validateRecipe = function(name, instruction, ingredients) {
 
-    if ((typeof name || typeof instruction) != 'string' ) {       
-        console.log('All fields need to be a string!');
+    if ((typeof name != 'string' || typeof instruction != 'string')  ) {       
         return false;
     }
 
     if (!(Array.isArray(ingredients))) {       
-        console.log('ingredients need to be an array!');
         return false;
     }
 
-    if ((typeof name || typeof instruction || typeof ingredient) === '' ) {       
-        console.log('All fields are required!');
+    if ((name ==='' || instruction === '' )) {       
         return false;
-    };   
+    }; 
+    
+    if ((ingredients.length == 0 )) {       
+        return false;
+    };
     return true;
 }
 
