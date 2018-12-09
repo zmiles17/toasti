@@ -257,10 +257,38 @@ p {
 
 .star-in::before{
     font-family: "Font Awesome 5 Free";
-    content: "\f005 \f005 \f005 \f005 \f005";
+    content: "\f005";
     font-weight: 900;
     color: gold;
     margin-right: 15px;
+}
+
+.thestar{
+    display: inline-block;
+    position: relative;
+}
+
+.thestar::before{
+    font-family: "Font Awesome 5 Free";
+    content: "\f005";
+    font-weight: 900;
+}
+
+.thestar:hover{
+    color: gold;
+}
+
+.thestar.rated::before{
+    font-family: "Font Awesome 5 Free";
+    content: "\f005";
+    font-weight: 900;
+    color: gold;
+}
+
+button.theclick{
+    background: none;
+    border: none;
+    padding: 2px 2px;
 }
 
 
