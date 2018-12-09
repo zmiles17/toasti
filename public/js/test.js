@@ -1,6 +1,3 @@
-const expect = require('chai').expect;
-const app = require('./app.js');
-
 //christian test
 
 //Unit
@@ -16,8 +13,6 @@ describe('average', function(){
 // })
 
 //****************Gina code starts*************************************
-// const expect = require('chai').expect;
-// const validateRecipe = require('./app.js').validateRecipe;
 //Unit Test
 
 describe('validateRecipe', function() {
@@ -51,54 +46,63 @@ describe('add recipe', function () {
     let server;
 
     before(function() {
-        server = sinon.fakeServer.create(),
-        server.respondWith('POST', '/recipe', [
-            200, { 'Content-Type': 'application/json'}, JSON.stringify({data})
-        ]);
+        server = sinon.fakeServer.create();       
     });
 
     after(function () {
         server.restore();
     })
 
-    it('should add recipe on click', function () {
+    it('should add recipe on click', function (done) {
+        this.timeout(3000);
         // assign values for input boxes
         $('#recipeName').val('Screwdriver');
         $('#instruction').val('Mix vodka and orange juice');
         $('#ingredient').val('1 cup vodka');
-        $('#Ingredient2').val('1 1/2 cups orange juice');
+        // $('#Ingredient2').val('1 1/2 cups orange juice');
 
         // mock server to handle Post
-        server.respondWith('POST', '/recipe', [
-            200, { 'Content-Type': 'application/json' }, JSON.stringify({result: 'success'})
-          ]);
+        server.respondWith('POST', '/api/recipe', [
+            200, { 'Content-Type': 'application/json' }, 
+          JSON.stringify({
+                    id: 12312312,
+                    name: 'Screwdriver',
+                    instruction: 'Mix vodka and orange juice',                  
+                    ingredients: [
+                        { name: '1 cup vodka' }],
+                    })
+                ]);
       
         //button trigger
         $('#btnAddRecipe').trigger('click');
 
         //get expect
         server.respond();
-        expect($('#showResult').text()).to.equal('Successfully added!');
+        expect($('#showResult').text()).to.equal('Thanks for your cocktail recipe.  It has been saved successfully!');
+        done();
     })
 
-    it('should not add existing recipe on click', function () {
+    it('should not add existing recipe on click', function (done) {
+        this.timeout(3000);
         // assign values for input boxes
-        $('#Name').val('Screwdriver');
-        $('#Description').val('Mix vodka and orange juice');
-        $('#Ingredient1').val('1 cup vodka');
-        $('#Ingredient2').val('1 1/2 cups orange juice');
+        $('#recipeName').val('Screwdriver');
+        $('#instruction').val('Mix vodka and orange juice');
+        $('#ingredient').val('1 cup vodka');
+        $('#showResult').empty();
 
         // mock server to handle Post
-        server.respondWith('POST', '/recipe', [
-            200, { 'Content-Type': 'application/json' }, JSON.stringify({result: 'error'})
+        server.respondWith('POST', '/api/recipe', [
+            200, { 'Content-Type': 'application/json' }, JSON.stringify({reason: 'Oops, the recipe already exists! Try again.'})
           ]);
-      
+
+     
         //button trigger
-        $('#addRecipe').trigger('click');
+        $('#btnAddRecipe').trigger('click');
 
         //get expect
         server.respond();
         expect($('#showResult').text()).to.equal('Oops, the recipe already exists! Try again.');
+        done();
     })
 
     it('should add ingredient on click', function () {
@@ -114,11 +118,11 @@ describe('add recipe', function () {
     it('should remove ingredient on click', function () {
       
         //button trigger
-        $('#btnRemoveIngredient1').trigger('click');
+        $('.remove').trigger('click');
 
         //get Expect
         server.respond();
-        expect($('.ingredient').length).to.equal(1);
+        expect($('.ingredient').length).to.equal(0);
     })
 })
 //****************Gina code ends*************************************
