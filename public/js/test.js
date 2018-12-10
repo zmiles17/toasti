@@ -1,8 +1,8 @@
 //christian test
 
 //Unit
-describe('average', function(){
-    it('should return the average of ratings for recipe', function(){
+describe('average', function () {
+    it('should return the average of ratings for recipe', function () {
         expect(app.average(4)).to.equal(4);
     });
 })
@@ -15,38 +15,38 @@ describe('average', function(){
 //****************Gina code starts*************************************
 //Unit Test
 
-describe('validateRecipe', function() {
-    it('should return false if name is not a string ', function() {
-        expect(validateRecipe(123,'mix ingredients', ['vodka','OJ'])).to.equal(false);
+describe('validateRecipe', function () {
+    it('should return false if name is not a string ', function () {
+        expect(validateRecipe(123, 'mix ingredients', ['vodka', 'OJ'])).to.equal(false);
     });
-    it('should return false if instruction is not a string ', function() {
-        expect(validateRecipe('Screwdriver', [] , ['vodka','OJ'])).to.equal(false);
+    it('should return false if instruction is not a string ', function () {
+        expect(validateRecipe('Screwdriver', [], ['vodka', 'OJ'])).to.equal(false);
     });
-    it('should return false if ingrdient is not an [] ', function() {
-        expect(validateRecipe('Screwdriver','mix ingredients', 'OJ')).to.equal(false);
-    });
-
-    it('should return false if name is empty ', function() {
-        expect(validateRecipe('','mix ingredients', ['vodka','OJ'])).to.equal(false);
-    });
-    it('should return false if description is empty ', function() {
-        expect(validateRecipe('Screwdriver','', ['vodka','OJ'])).to.equal(false);
-    });
-    it('should return false if ingrdient is empty ', function() {
-        expect(validateRecipe('Screwdriver','mix ingredients', [])).to.equal(false);
-    });
-    it('should return true for if above criteria are met ', function() {
-        expect(validateRecipe('Screwdriver','mix ingredients', ['vodka','OJ'])).to.equal(true);
+    it('should return false if ingrdient is not an [] ', function () {
+        expect(validateRecipe('Screwdriver', 'mix ingredients', 'OJ')).to.equal(false);
     });
 
-  });
+    it('should return false if name is empty ', function () {
+        expect(validateRecipe('', 'mix ingredients', ['vodka', 'OJ'])).to.equal(false);
+    });
+    it('should return false if description is empty ', function () {
+        expect(validateRecipe('Screwdriver', '', ['vodka', 'OJ'])).to.equal(false);
+    });
+    it('should return false if ingrdient is empty ', function () {
+        expect(validateRecipe('Screwdriver', 'mix ingredients', [])).to.equal(false);
+    });
+    it('should return true for if above criteria are met ', function () {
+        expect(validateRecipe('Screwdriver', 'mix ingredients', ['vodka', 'OJ'])).to.equal(true);
+    });
+
+});
 
 // Functional/DOM/UI Test
 describe('add recipe', function () {
     let server;
 
-    before(function() {
-        server = sinon.fakeServer.create();       
+    before(function () {
+        server = sinon.fakeServer.create();
     });
 
     after(function () {
@@ -63,16 +63,16 @@ describe('add recipe', function () {
 
         // mock server to handle Post
         server.respondWith('POST', '/api/recipe', [
-            200, { 'Content-Type': 'application/json' }, 
-          JSON.stringify({
-                    id: 12312312,
-                    name: 'Screwdriver',
-                    instruction: 'Mix vodka and orange juice',                  
-                    ingredients: [
-                        { name: '1 cup vodka' }],
-                    })
-                ]);
-      
+            200, { 'Content-Type': 'application/json' },
+            JSON.stringify({
+                id: 12312312,
+                name: 'Screwdriver',
+                instruction: 'Mix vodka and orange juice',
+                ingredients: [
+                    { name: '1 cup vodka' }],
+            })
+        ]);
+
         //button trigger
         $('#btnAddRecipe').trigger('click');
 
@@ -92,10 +92,10 @@ describe('add recipe', function () {
 
         // mock server to handle Post
         server.respondWith('POST', '/api/recipe', [
-            200, { 'Content-Type': 'application/json' }, JSON.stringify({reason: 'Oops, the recipe already exists! Try again.'})
-          ]);
+            200, { 'Content-Type': 'application/json' }, JSON.stringify({ reason: 'Oops, the recipe already exists! Try again.' })
+        ]);
 
-     
+
         //button trigger
         $('#btnAddRecipe').trigger('click');
 
@@ -106,7 +106,7 @@ describe('add recipe', function () {
     })
 
     it('should add ingredient on click', function () {
-      
+
         //button trigger
         $('#btnAddIngredient').trigger('click');
 
@@ -116,7 +116,7 @@ describe('add recipe', function () {
     })
 
     it('should remove ingredient on click', function () {
-      
+
         //button trigger
         $('.remove').trigger('click');
 
@@ -129,40 +129,57 @@ describe('add recipe', function () {
 
 describe('search', function () {
 
-  let server;
+    let server;
 
-  beforeEach(function () {
-    server = sinon.fakeServer.create();
-    total = 0;
-  });
+    beforeEach(function () {
+        server = sinon.fakeServer.create();
+        total = 0;
+    });
 
-  afterEach(function () {
-    server.restore();
-  });
+    afterEach(function () {
+        server.restore();
+    });
 
-  it('should run search on click', function () {
+    it('should render recipe', function () {
 
-    server.respondWith('GET', '/api/search', [
-      200, { 'Content-Type': 'application/json' }, JSON.stringify([{
-        instruction: 'Stir into glass over ice, garnish and serve',
-        name: 'Negroni',
-        ingredients: [
-            { name: '1 oz Gin' },
-            { name: '1 oz Campari' },
-            { name: '1 oz Sweet Vermouth' }],
-        // image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
-      }])
-    ]);
+        // server.respondWith('GET', '/api/recipe/null', [
+        //   200, { 'Content-Type': 'application/json' }, JSON.stringify({
+        //     instruction: 'Stir into glass over ice, garnish and serve',
+        //     name: 'Negroni',
+        //     ingredients: [
+        //         { name: '1 oz Gin' },
+        //         { name: '1 oz Campari' },
+        //         { name: '1 oz Sweet Vermouth' }],
+        //   })
+        // ]);
 
-    $('#search').trigger('submit');
+        // server.respondWith('GET', 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Negroni', [
+        //     200, { 'Content-Type': 'application/json' }, JSON.stringify({})
+        //   ]);
 
-    server.respond();
-    expect($('#name-0').text()).to.equal('Negroni');
-    expect($('#instruction-0').text()).to.equal('Stir into glass over ice, garnish and serve');
-    expect($('#image-0').attr('src')).to.equal('https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg');
-    expect($('#ingredient-0').html()).to.equal('<ul><li>1 oz Gin</li><li>1 oz Campari</li><li>1 oz Sweet Vermouth</li></ul>');
-    //may need to go back in and redo the ul structure
-  });
+
+        const recipe = {
+            instruction: 'Stir into glass over ice, garnish and serve',
+            name: 'Negroni',
+            ingredients: [
+                { name: '1 oz Gin' },
+                { name: '1 oz Campari' },
+                { name: '1 oz Sweet Vermouth' }],
+        };
+
+        // call the fn under test
+        renderRecipe(recipe);
+
+        // server.respond();
+
+        expect($('#recipe-title').text()).to.equal('Negroni');
+        expect($('.instruction-body').text()).to.equal('Stir into glass over ice, garnish and serve');
+        // expect($('#image-0').attr('src')).to.equal('https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg');
+        expect($('.ingredient-list').html()).to.equal('<li>1 oz Gin</li><li>1 oz Campari</li><li>1 oz Sweet Vermouth</li>');
+        
+        // reset dom
+        $('.recipe').empty()
+    });
 
 
 });
