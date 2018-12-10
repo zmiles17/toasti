@@ -103,11 +103,6 @@ INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`r
 INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'2 tsp superfine sugar',NOW(),NOW(),15);
 INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'1 cup crushed ice',NOW(),NOW(),15);
 
-INSERT INTO x311v5btag9bv5mr.recipes (`id`,`name`,`instruction`, `TotalStars`,`TotalVotes`, `createdAt`,`updatedAt`) VALUES (16,'Lemon Drop','Coat the rim of a cocktail glass with sugar and set aside. Add all the ingredients into the shaker with ice and shake. Strain into the prepared glass.',5,1,NOW(),NOW());
-INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'12 oz Vodka',NOW(),NOW(),16);
-INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'1 oz ounce fresh lemon juice',NOW(),NOW(),16);
-INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'1 oz simple syrup',NOW(),NOW(),16);
-INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'1/2 oz triple sec',NOW(),NOW(),16);
 
 INSERT INTO x311v5btag9bv5mr.recipes (`id`,`name`,`instruction`, `TotalStars`,`TotalVotes`, `createdAt`,`updatedAt`) VALUES (17,'French Negroni','Add ice to a shaker and pour in all the ingredients. Using a bar spoon, stir 40 to 45 revolutions or until thoroughly chilled. Strain into a martini glass over ice into a rocks glass. Garnish with a twist.',5,1,NOW(),NOW());
 INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'1 oz Gin',NOW(),NOW(),17);
