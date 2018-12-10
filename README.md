@@ -2,7 +2,7 @@
 An application made for users to add, search, and rate cocktail recipes.
 
 ## Screenshots
-![](public/assets/screenshot.png)
+![](public/assets/screenshot1.png)
 
  ## Tech/framework used
 HTML, CSS, JavaScript, jQuery, MySQL, Sequelize.js, Node.js, Express, Mocha, Chai, Sinon
