@@ -144,11 +144,6 @@ footer {
     color: blue;
 }
 
-.recipe-rating {
-    position: absolute;
-    right: 25px;
-}
-
 .search-results-msg {
     text-align: center;
     font-size: 30px;
@@ -236,7 +231,8 @@ p {
 
 .star-out{
     display: inline-block;
-    position: relative;
+    position: absolute;
+    right: 25px;
 }
 
 .star-out::before{
