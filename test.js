@@ -116,7 +116,7 @@ describe('GET /api/recipe', function () {
                         });
                       expect(responseBody[1].ingredients).to.be.an('array');
                       expect(responseBody[1].ingredients.map(i => i.name)).to.deep.equal([
-                        '3/4 oz Sweet Vermouth', '2 1/2 oz Blended Bourbon', 'dash Angostura bitters', '2 or 3 Ice', '1 Maraschino cherry', '1 twist of Orange peel',
+                        '3/4 oz Sweet Vermouth', '2 1/2 oz Blended Bourbon', 'dash Angostura bitters', '1 Maraschino cherry', '1 twist of Orange peel',
                       ])
 
                       expect(responseBody[2])
@@ -296,10 +296,7 @@ describe('POST /api/recipe', function () {
     let reqBody = {
       instruction: 'Shake it, stir it, serve it up right',
       name: 'stealthy',
-      // ingredients: [
-      //   { name: 'stealth' },
-      //   { name: 'cunning' },
-      //   { name: 'fortitude' }],
+      ingredient: ['stealth' ,'cunning' ,'fortitude' ] // need to send in array of string,
       // image: 'https://www.thecocktaildb.com/images/media/drink/jfvyog1530108909.jpg'
     };
 
@@ -310,7 +307,7 @@ describe('POST /api/recipe', function () {
       .end(function (err, res) {
         var responseStatus = res.status;
         var responseBody = res.body;
-
+ 
         // Run assertions on the response
 
         expect(err).to.be.null;

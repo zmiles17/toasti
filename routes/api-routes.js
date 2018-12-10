@@ -39,25 +39,26 @@ module.exports = function (app) {
 
   //**************gina code starts*****************************
   app.post("/api/recipe", function (req, res) {
-
+    
     let ingredients = req.body.ingredient;
     //convert array of strings into array of objects
     let ingredientList = [];
- 
+    let coctailName = req.body.name;
+
     ingredients.forEach(element => {
       ingredientList.push({name:element});
     });
-    
-    db.recipe.create({
-      name: req.body.name,
+
+     db.recipe.create({
+      name: coctailName,
       instruction: req.body.instruction,
       ingredients: ingredientList
     },{
       include:[db.ingredient]
     }).then(function (result) {
-      res.json(result);
-    }).catch(function (err) {
-      if(err.message == 'Validation error')
+       res.json(result);
+    }).catch(function (err) {     
+       if(err.message == 'Validation error')
         res.json({success:false, reason:'The cocktail name already exists.'})
       else
         res.json({ success: false, reason: 'error' });
