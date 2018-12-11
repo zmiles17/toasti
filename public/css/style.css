@@ -249,7 +249,7 @@ p {
     left: 0;
     white-space: nowrap;
     overflow: hidden;
-    width: 0;
+    width: 0%;
 }
 
 .star-in::before{
