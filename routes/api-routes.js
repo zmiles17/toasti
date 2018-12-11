@@ -14,13 +14,13 @@ module.exports = function (app) {
         //[Op.or] provides an option to match the Recipe name to contain query.
         //[Op.like] finds all matches. 
         [Op.or]: [
-          { name: { [Op.like]: `%${query}%` } },
+          db.sequelize.where( db.sequelize.fn('upper', db.sequelize.col('recipe.name')), { [Op.like]: `%${query.toUpperCase()}%` } ),
           {
             id: {
               //This is a SQL subquery. Read more here https://github.com/sequelize/sequelize/issues/3961
               // [Op.In] searches for matching name within ingredients and returns matching recipe Ids.
               [Op.in]: [
-                literal(`select recipeId from ingredients where name like "%${query}%"`)
+                literal(`select recipeId from ingredients where UPPER(name) like "%${query.toUpperCase()}%"`)
               ]
             }
           }

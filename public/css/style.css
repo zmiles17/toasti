@@ -97,6 +97,11 @@ span {
     font-family: "Dancing Script";
 }
 
+#welcome-title {
+    font-size: -webkit-xxx-large;
+    font-weight: 400;
+}
+
 .fab {
     font-size: 30px;
     transition:  all 0.1s linear;
@@ -108,15 +113,15 @@ span {
 }
 
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     right: 50%;
 }
 
 .thumbnail {
     border-radius: 50px;
-    height: 200px;
-    width: 200px;
+    height: auto;
+    width: auto;
     margin-top: 50px;
     box-shadow: 0px 0px 23px 5px rgba(0,0,0,0.75);
 }
@@ -139,9 +144,10 @@ footer {
     color: blue;
 }
 
-.recipe-rating {
-    position: absolute;
-    right: 25px;
+.search-results-msg {
+    text-align: center;
+    font-size: 30px;
+    font-family: "Argos"
 }
 /* Zack's CSS ends */
 .image-container {
@@ -225,7 +231,8 @@ p {
 
 .star-out{
     display: inline-block;
-    position: relative;
+    position: absolute;
+    right: 25px;
 }
 
 .star-out::before{
@@ -365,6 +372,7 @@ textarea{
     margin-top: 20px;
     color: green;
     text-align: center;
+    font-family: "Argos";
 }
 
 
