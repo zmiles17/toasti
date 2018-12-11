@@ -78,4 +78,18 @@ module.exports = function (app) {
       res.json(dbItem);
     });
   });
+
+  app.post('/api/recipe/:id', function(req, res){
+    const id = req.params.id;
+    db.recipe.update({
+      id: req.params.id
+    },{
+      where: {
+        TotalStars: req.body.TotalStars,
+        TotalVotes: req.body.TotalVotes
+      }
+    }).then(function(dbRecipe){
+      res.json(dbRecipe);
+    });
+  });
 }
