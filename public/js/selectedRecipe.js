@@ -37,7 +37,7 @@ const search = function () {
     const recipeName = recipe.name;
     axios.get(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${recipeName}`).then(function (data) {
       let recipeThumb;
-      if (data.data.drinks !== null) return recipeThumb = data.data.drinks[0].strDrinkThumb;
+      if (data.data.drinks !== null) recipeThumb = data.data.drinks[0].strDrinkThumb;
       renderRecipe(recipe, recipeThumb)
     })
   })
