@@ -20,7 +20,8 @@ $('#ingredientSection').on("keydown",'.ingredient',function (e) {
 });
 
 //Add input field dynamically
-$('#btnAddIngredient').click(function (){
+$('#btnAddIngredient').click(function (e){
+    e.preventDefault();
     if($('.ingredient').length < 5){
     let htmlStr = 
     `<span class="noBreak"><input id="ingredient" class="addRecipeInput ingredient" placeholder="e.g. 2 oz of Orange Juice" required/><button class='remove btn-fa'><i class="fas fa-times btn-style"></i></button></span><br />`    
@@ -38,7 +39,7 @@ $(document).on('click', '.remove', function() {
 
 $('#frmAddRecipe').submit(function(e){
     e.preventDefault();
-    let name = $('#recipeName').val().toUpperCase();
+    let name = $('#recipeName').val();
     let instruction = $('#instruction').val();
     let ingredients = [];
     $('.ingredient').each(function(){
