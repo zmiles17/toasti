@@ -4,7 +4,7 @@ CREATE DATABASE x311v5btag9bv5mr;
 
 -- recipie table create
 DROP TABLE IF EXISTS x311v5btag9bv5mr.recipes;
-CREATE TABLE IF NOT EXISTS x311v5btag9bv5mr.recipes (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) NOT NULL, `instruction` VARCHAR(20000) NOT NULL, `TotalStars` INTEGER, `TotalVotes` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS x311v5btag9bv5mr.recipes (`id` INTEGER NOT NULL auto_increment , `name` VARCHAR(255) NOT NULL UNIQUE, `instruction` VARCHAR(20000) NOT NULL, `TotalStars` INTEGER, `TotalVotes` INTEGER, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL, PRIMARY KEY (`id`)) ENGINE=InnoDB;
 SHOW INDEX FROM x311v5btag9bv5mr.recipes FROM `x311v5btag9bv5mr`;
 
 -- ingredients table create
