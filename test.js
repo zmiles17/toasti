@@ -325,3 +325,38 @@ describe('POST /api/recipe', function () {
   });
 });
 
+describe('POST /api/recipe/update', function(done){
+  let reqBody = {
+    id: 1,
+    TotalStars: 4,
+    TotalVotes: 3
+
+  };
+  // POST the request body to the server
+  request
+  .post('/api/recipe/update')
+  .send(reqBody)
+  .end(function (err, res) {
+    var responseStatus = res.status;
+    var responseBody = res.body;
+
+    // Run assertions on the response
+
+    expect(err).to.be.null;
+
+    expect(responseStatus).to.equal(200);
+
+    expect(responseBody)
+      .to.be.an('object')
+      .that.includes({
+        id: reqBody.id,
+        TotalStars: reqBody.TotalStars,
+        TotalVotes: reqBody.TotalVotes
+      });
+
+    // The `done` function is used to end any asynchronous tests
+    done();
+  });
+});
+
+

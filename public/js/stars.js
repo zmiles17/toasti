@@ -1,7 +1,8 @@
 
 const average = function (allStars, allVotes) {
-    let theAvg = Math.round(allStars / allVotes);
-    let result = theAvg * 10;
+    let theRtng = allStars / allVotes;
+    let theAvg = (theRtng / 5)*100;
+    let result = Math.round(theAvg/10)*10;
 
     return result;
 }
@@ -18,8 +19,8 @@ const rating = async function (event) {
     let num;
 
 
-    const parsedUrl = new URL(window.location.href);//href is the full URL.Parsing the URL makes it easy to get the search param.
-    const id = parsedUrl.searchParams.get("id");//This is getting the query the user entered onto the index page.https://developer.mozilla.org/en-US/docs/Web/API/URL
+    const parsedUrl = new URL(window.location.href);
+    const id = parsedUrl.searchParams.get("id");
     if (initialVote === false) {
         await fetch(`/api/recipe/${id}`).then(function (res) {
             return res.json();
@@ -45,9 +46,9 @@ const rating = async function (event) {
     initialVote = true;
     let newStars = everyStar +=num;
     let updatedStars = {
+        id: id,
         TotalStars: newStars,
         TotalVotes: everyVote+=1,
     }
-    $.post(`/api/recipe/${id}`, updatedStars)
-
+    $.post('/api/recipe/update', updatedStars)
 }
