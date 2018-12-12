@@ -76,7 +76,7 @@ INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`r
 INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'dash Orange bitters',NOW(),NOW(),11);
 
 INSERT INTO x311v5btag9bv5mr.recipes (`id`,`name`,`instruction`, `TotalStars`,`TotalVotes`, `createdAt`,`updatedAt`) VALUES (12,'Vieux Carre','Add all the ingredients to a mixing glass and fill with ice. Stir, and strain into a cocktail glass. Garnish with a cherry.',5,1,NOW(),NOW());
-INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'4 dashes Dale DeGroff\'s Pimento Aromatic Bitters',NOW(),NOW(),12);
+INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,`4 dashes Dale DeGroff's Pimento Aromatic Bitters`,NOW(),NOW(),12);
 INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'2 tsp Benedictine',NOW(),NOW(),12);
 INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'3/4 oz Sweet vermouth',NOW(),NOW(),12);
 INSERT INTO x311v5btag9bv5mr.ingredients (`id`,`name`,`createdAt`,`updatedAt`,`recipeId`) VALUES (DEFAULT,'3/4 oz Cognac',NOW(),NOW(),12);
