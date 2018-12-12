@@ -19,7 +19,7 @@ npm install && npm start
 If you would like to contribute, please open an issue and submit a pull request so that someone may review it. 
 
  ## Credits
-Zack Miles,
-Veronica Blaha,
-Gina Yi,
-Christian Graves
+**Zack Miles** - Lead Engineer, UI interface, GitHub workflow<br>
+**Veronica Blaha** - MySQL database build, initial API routing and search by ingredient/name functionality<br>
+**Gina Yi** - add recipe functionality, add recipe UI styles and routes<br>
+**Christian Graves** - star rating system, routing and saving ratings system
