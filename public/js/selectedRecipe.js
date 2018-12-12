@@ -14,7 +14,7 @@ const renderRecipe = function(recipe, recipeThumb) {
   <button class="theclick"><span class="thestar"></span></button>
   </span>`);
 
-  const recipeEl = $('<div class="info">');
+  const recipeEl = $('<div id="info">');
   recipeEl.append(headerEl);
   recipeEl.append(`<p class="instruction-body">${recipe.instruction}</p>`);
 
