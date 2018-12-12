@@ -11,6 +11,7 @@ chai.use(chaiHttp);
 
 
 describe('GET /api/recipe', function () {
+this.timeout(4000)
   let request;
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
@@ -39,12 +40,12 @@ describe('GET /api/recipe', function () {
           instruction: 'Stirred over ice, strained into a chilled glass, garnished, and served up',
           name: 'Manhatten',
           ingredients: [
-            { name: '3/4 oz Sweet Vermouth' },
-            { name: '2 1/2 oz Blended Bourbon' },
-            { name: 'dash Angostura bitters' },
-            { name: '2 or 3 Ice' },
             { name: '1 Maraschino cherry' },
-            { name: '1 twist of Orange peel' }],
+            { name: '1 twist of Orange peel' },
+            { name: '2 or 3 Ice' },
+            { name: '2 1/2 oz Blended Bourbon' },
+            { name: '3/4 oz Sweet Vermouth' },
+            { name: 'dash Angostura bitters' }],           
           image: 'https://www.thecocktaildb.com/images/media/drink/ec2jtz1504350429.jpg'
         }, {
             include: [db.ingredient]
@@ -115,9 +116,14 @@ describe('GET /api/recipe', function () {
                         });
                       expect(responseBody[1].ingredients).to.be.an('array');
                       expect(responseBody[1].ingredients.map(i => i.name)).to.deep.equal([
-                        '3/4 oz Sweet Vermouth', '2 1/2 oz Blended Bourbon', 'dash Angostura bitters', '2 or 3 Ice', '1 Maraschino cherry', '1 twist of Orange peel',
+                        '1 Maraschino cherry', 
+                        '1 twist of Orange peel', 
+                        '2 or 3 Ice',
+                        '2 1/2 oz Blended Bourbon', 
+                        '3/4 oz Sweet Vermouth',
+                        'dash Angostura bitters',
                       ])
-
+                      
                       expect(responseBody[2])
                         .to.be.an('object')
                         .that.includes({
@@ -284,6 +290,7 @@ describe('GET /api/recipe', function () {
 });
 
 describe('POST /api/recipe', function () {
+  this.timeout(4000)
   let request;
 
   beforeEach(function () {
@@ -327,13 +334,14 @@ describe('POST /api/recipe', function () {
 });
 
 describe('POST /api/recipe/update', function (done) {
+  this.timeout(4000)
   let request;
 
   beforeEach(function () {
     request = chai.request(server);
     return db.sequelize.sync({ force: true });
   });
-
+  
   it('update the total votes and stars for a recipe', function (done) {
     db.recipe.create({
       id: 1,
@@ -382,5 +390,6 @@ describe('POST /api/recipe/update', function (done) {
       })
   });
 });
+
 
 
