@@ -79,14 +79,14 @@ module.exports = function (app) {
     });
   });
 
-  app.post('/api/recipe/:id', function(req, res){
-    const id = req.params.id;
+  app.post('/api/recipe/update', function(req, res){
     db.recipe.update({
-      id: req.params.id
+      TotalStars: req.body.TotalStars,
+      TotalVotes: req.body.TotalVotes
+      
     },{
       where: {
-        TotalStars: req.body.TotalStars,
-        TotalVotes: req.body.TotalVotes
+        id: req.body.id
       }
     }).then(function(dbRecipe){
       res.json(dbRecipe);
