@@ -3,7 +3,7 @@
 //Unit
 describe('average', function () {
     it('should return the average percentage for star render', function () {
-        expect(star.average(10, 2)).to.equal(100);
+        expect(average(10, 2)).to.equal(100);
     });
 })
 
