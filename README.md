@@ -1,4 +1,4 @@
-## toasti
+# toasti
 An application made for users to add, search, and rate cocktail recipes.
 
 ## Screenshots
