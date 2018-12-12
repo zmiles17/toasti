@@ -341,7 +341,7 @@ describe('POST /api/recipe/update', function (done) {
     request = chai.request(server);
     return db.sequelize.sync({ force: true });
   });
-
+  
   it('update the total votes and stars for a recipe', function (done) {
     db.recipe.create({
       id: 1,
