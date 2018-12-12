@@ -22,7 +22,6 @@
   "dependencies": {
     "chai": "^4.2.0",
     "chai-http": "^4.2.0",
-    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "mocha": "^5.2.0",
     "mysql2": "^1.6.4",
