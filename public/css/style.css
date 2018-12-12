@@ -210,8 +210,11 @@ input {
 .info {
     margin-left: 25px;
     margin-top: 15px;
+    margin-right: 25px;
     margin-bottom: 15px;
     font-family: "Open Sans", sans-serif;
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
 }
 
 .search-columns {
