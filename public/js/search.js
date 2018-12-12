@@ -16,7 +16,6 @@ const search = function () {
       let theStars = recipe.TotalStars;
       let theVotes = recipe.TotalVotes;
       let starRndr = average(theStars,theVotes);
-      console.log(starRndr)
 
       const recipeEl = $('<div class="info">');
 
