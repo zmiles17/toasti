@@ -67,6 +67,7 @@ module.exports = function (app) {
     // db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {
     //   res.json(dbRecipe);
     // })
+
   
   app.get('/api/recipe/:id', function (req, res) {
     const id = req.params.id;
@@ -80,16 +81,23 @@ module.exports = function (app) {
   });
 
   app.post('/api/recipe/update', function(req, res){
+    const id = req.body.id;
     db.recipe.update({
       TotalStars: req.body.TotalStars,
       TotalVotes: req.body.TotalVotes
       
     },{
       where: {
-        id: req.body.id
+        id: id
       }
     }).then(function(dbRecipe){
-      res.json(dbRecipe);
+      db.recipe.findById(id, {
+        include: [{
+          model: db.ingredient,
+        }]
+      }).then(function (dbItem) {
+        res.json(dbItem);
+      });
     });
   });
 }
