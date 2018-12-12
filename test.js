@@ -326,6 +326,7 @@ describe('POST /api/recipe', function () {
 });
 
 describe('POST /api/recipe/update', function(done){
+  it('update the total votes and stars for a recipe', function (done) {
   let reqBody = {
     id: 1,
     TotalStars: 4,
@@ -357,6 +358,7 @@ describe('POST /api/recipe/update', function(done){
     // The `done` function is used to end any asynchronous tests
     done();
   });
+  })
 });
 
 
