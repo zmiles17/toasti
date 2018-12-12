@@ -1,4 +1,5 @@
 
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const db = require("./models");
@@ -12,6 +13,7 @@ app.use(express.json());
 
 require("./routes/html-routes")(app);
 require("./routes/api-routes")(app);
+
 
 db.sequelize.sync({ force: false }).then(function() {
     server.listen(PORT, function() {
