@@ -9,10 +9,9 @@ const routes = require('./routes/api-routes');
 // Setting up the chai http plugin
 chai.use(chaiHttp);
 
-let request;
-
 
 describe('GET /api/recipe', function () {
+  let request;
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
   beforeEach(function () {
@@ -285,6 +284,8 @@ describe('GET /api/recipe', function () {
 });
 
 describe('POST /api/recipe', function () {
+  let request;
+
   beforeEach(function () {
     request = chai.request(server);
     return db.sequelize.sync({ force: true });
@@ -325,40 +326,61 @@ describe('POST /api/recipe', function () {
   });
 });
 
-describe('POST /api/recipe/update', function(done){
-  it('update the total votes and stars for a recipe', function (done) {
-  let reqBody = {
-    id: 1,
-    TotalStars: 4,
-    TotalVotes: 3
+describe('POST /api/recipe/update', function (done) {
+  let request;
 
-  };
-  // POST the request body to the server
-  request
-  .post('/api/recipe/update')
-  .send(reqBody)
-  .end(function (err, res) {
-    var responseStatus = res.status;
-    var responseBody = res.body;
-
-    // Run assertions on the response
-
-    expect(err).to.be.null;
-
-    expect(responseStatus).to.equal(200);
-
-    expect(responseBody)
-      .to.be.an('object')
-      .that.includes({
-        id: reqBody.id,
-        TotalStars: reqBody.TotalStars,
-        TotalVotes: reqBody.TotalVotes
-      });
-
-    // The `done` function is used to end any asynchronous tests
-    done();
+  beforeEach(function () {
+    request = chai.request(server);
+    return db.sequelize.sync({ force: true });
   });
-  })
+
+  it('update the total votes and stars for a recipe', function (done) {
+    db.recipe.create({
+      id: 1,
+      instruction: 'Stir into glass over ice, garnish and serve',
+      name: 'Negroni',
+      ingredients: [
+        { name: '1 oz Gin' },
+        { name: '1 oz Campari' },
+        { name: '1 oz Sweet Vermouth' }],
+      image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
+    }, {
+        include: [db.ingredient]
+      }).then(function () {
+        let reqBody = {
+          id: 1,
+          TotalStars: 4,
+          TotalVotes: 3
+
+        };
+        console.log(request)
+        // POST the request body to the server
+        request
+          .post('/api/recipe/update')
+          .send(reqBody)
+          .end(function (err, res) {
+            var responseStatus = res.status;
+            var responseBody = res.body;
+
+            // Run assertions on the response
+
+            expect(err).to.be.null;
+
+            expect(responseStatus).to.equal(200);
+
+            expect(responseBody)
+              .to.be.an('object')
+              .that.includes({
+                id: reqBody.id,
+                TotalStars: reqBody.TotalStars,
+                TotalVotes: reqBody.TotalVotes
+              });
+
+            // The `done` function is used to end any asynchronous tests
+            done();
+          });
+      })
+  });
 });
 
 
