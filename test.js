@@ -9,10 +9,10 @@ const routes = require('./routes/api-routes');
 // Setting up the chai http plugin
 chai.use(chaiHttp);
 
-let request;
-
 
 describe('GET /api/recipe', function () {
+this.timeout(4000)
+  let request;
   // Before each test begins, create a new request server for testing
   // & delete all examples from the db
   beforeEach(function () {
@@ -40,12 +40,12 @@ describe('GET /api/recipe', function () {
           instruction: 'Stirred over ice, strained into a chilled glass, garnished, and served up',
           name: 'Manhatten',
           ingredients: [
-            { name: '3/4 oz Sweet Vermouth' },
-            { name: '2 1/2 oz Blended Bourbon' },
-            { name: 'dash Angostura bitters' },
-            { name: '2 or 3 Ice' },
             { name: '1 Maraschino cherry' },
-            { name: '1 twist of Orange peel' }],
+            { name: '1 twist of Orange peel' },
+            { name: '2 or 3 Ice' },
+            { name: '2 1/2 oz Blended Bourbon' },
+            { name: '3/4 oz Sweet Vermouth' },
+            { name: 'dash Angostura bitters' }],           
           image: 'https://www.thecocktaildb.com/images/media/drink/ec2jtz1504350429.jpg'
         }, {
             include: [db.ingredient]
@@ -116,9 +116,14 @@ describe('GET /api/recipe', function () {
                         });
                       expect(responseBody[1].ingredients).to.be.an('array');
                       expect(responseBody[1].ingredients.map(i => i.name)).to.deep.equal([
-                        '3/4 oz Sweet Vermouth', '2 1/2 oz Blended Bourbon', 'dash Angostura bitters', '2 or 3 Ice', '1 Maraschino cherry', '1 twist of Orange peel',
+                        '1 Maraschino cherry', 
+                        '1 twist of Orange peel', 
+                        '2 or 3 Ice',
+                        '2 1/2 oz Blended Bourbon', 
+                        '3/4 oz Sweet Vermouth',
+                        'dash Angostura bitters',
                       ])
-
+                      
                       expect(responseBody[2])
                         .to.be.an('object')
                         .that.includes({
@@ -285,6 +290,9 @@ describe('GET /api/recipe', function () {
 });
 
 describe('POST /api/recipe', function () {
+  this.timeout(4000)
+  let request;
+
   beforeEach(function () {
     request = chai.request(server);
     return db.sequelize.sync({ force: true });
@@ -325,38 +333,63 @@ describe('POST /api/recipe', function () {
   });
 });
 
-describe('POST /api/recipe/update', function(done){
-  let reqBody = {
-    id: 1,
-    TotalStars: 4,
-    TotalVotes: 3
+describe('POST /api/recipe/update', function (done) {
+  this.timeout(4000)
+  let request;
 
-  };
-  // POST the request body to the server
-  request
-  .post('/api/recipe/update')
-  .send(reqBody)
-  .end(function (err, res) {
-    var responseStatus = res.status;
-    var responseBody = res.body;
+  beforeEach(function () {
+    request = chai.request(server);
+    return db.sequelize.sync({ force: true });
+  });
 
-    // Run assertions on the response
+  it('update the total votes and stars for a recipe', function (done) {
+    db.recipe.create({
+      id: 1,
+      instruction: 'Stir into glass over ice, garnish and serve',
+      name: 'Negroni',
+      ingredients: [
+        { name: '1 oz Gin' },
+        { name: '1 oz Campari' },
+        { name: '1 oz Sweet Vermouth' }],
+      image: 'https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg'
+    }, {
+        include: [db.ingredient]
+      }).then(function () {
+        let reqBody = {
+          id: 1,
+          TotalStars: 4,
+          TotalVotes: 3
 
-    expect(err).to.be.null;
+        };
+        console.log(request)
+        // POST the request body to the server
+        request
+          .post('/api/recipe/update')
+          .send(reqBody)
+          .end(function (err, res) {
+            var responseStatus = res.status;
+            var responseBody = res.body;
 
-    expect(responseStatus).to.equal(200);
+            // Run assertions on the response
 
-    expect(responseBody)
-      .to.be.an('object')
-      .that.includes({
-        id: reqBody.id,
-        TotalStars: reqBody.TotalStars,
-        TotalVotes: reqBody.TotalVotes
-      });
+            expect(err).to.be.null;
 
-    // The `done` function is used to end any asynchronous tests
-    done();
+            expect(responseStatus).to.equal(200);
+
+            expect(responseBody)
+              .to.be.an('object')
+              .that.includes({
+                id: reqBody.id,
+                TotalStars: reqBody.TotalStars,
+                TotalVotes: reqBody.TotalVotes
+              });
+
+            // The `done` function is used to end any asynchronous tests
+            done();
+          });
+      })
   });
 });
+
 
 
