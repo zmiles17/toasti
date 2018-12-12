@@ -2,8 +2,8 @@
 
 //Unit
 describe('average', function () {
-    it('should return the average of ratings for recipe', function () {
-        expect(app.average(4)).to.equal(4);
+    it('should return the average percentage for star render', function () {
+        expect(star.average(10, 2)).to.equal(100);
     });
 })
 
