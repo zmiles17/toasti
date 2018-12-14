@@ -120,6 +120,7 @@ footer {
     margin-left: 25px;
     margin-top: 15px;
     margin-bottom: 15px;
+    padding-bottom: 50px;
     font-family: "Open Sans", sans-serif;
     height: 30vh;
 }
@@ -244,6 +245,7 @@ input {
 .recipe {
     border: 1px solid black;
     margin: 50px 25px 25px 25px;
+    height: 85vh;
 }
 
 .rating-column {
@@ -402,6 +404,12 @@ textarea{
     }
     .recipe-header {
        display: unset; 
+    }
+    .recipe {
+        height: auto;
+    }
+    .inputForm {
+        margin-left: 10px;
     }
 }
 
