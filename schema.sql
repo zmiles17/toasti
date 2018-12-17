@@ -1,3 +1,4 @@
+--author vblaha
 -- db create
 DROP DATABASE IF EXISTS recipeDB_test;
 CREATE DATABASE recipeDB_test;

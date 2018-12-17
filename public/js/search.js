@@ -1,4 +1,14 @@
+/**
+ * search looks in the browser's url for a query parameter "q"
+ * takes the value and uses it as a search term
+ * calls the backend server
+ * takes the search term and matches on recipe name or ingredient name
+ * returns a list of recipes
+ * displays the link and rating.
+ * @author vblaha
+ */
 const search = function () {
+
   const parsedUrl = new URL(window.location.href);//href is the full URL.Parsing the URL makes it easy to get the search param.
   const searchterm = parsedUrl.searchParams.get("q");//This is getting the query the user entered onto the index page.https://developer.mozilla.org/en-US/docs/Web/API/URL
   fetch(`/api/recipe?q=${searchterm}`).then(function (res) {
