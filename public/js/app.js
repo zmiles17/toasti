@@ -104,6 +104,7 @@ $('document').ready(function () {
      * reads the value in the search bar 
      * redirects the user to the search results page
      * sets the query param "q" to the user's search term
+     * @author vblaha
      */
     const resultsNavigation = function () {
         const searchterm = $('.search-bar').val();
@@ -117,6 +118,7 @@ $('document').ready(function () {
     /**
      * listens to the search bar for the enter key to be pressed
      * triggers the results page
+     * @author vblaha
      */
     $('.search-bar').keypress(function (e) {
         if (e.which == 13) {//Enter key pressed

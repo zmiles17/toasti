@@ -2,6 +2,7 @@
  * renders the recipe to the selectedRecipe results page
  * @param {object} recipe - this is the full recipe to show the user
  * @param {string} recipeThumb - this is the url of the thumbnail image of the recipe
+ * @author vlbaha
  */
 const renderRecipe = function(recipe, recipeThumb) {
   const el = $('.recipe');
@@ -41,6 +42,7 @@ const renderRecipe = function(recipe, recipeThumb) {
  * takes the id and returns the recipe and ingredients
  * calls to a third party API to find an image matched to recipe.name
  * displays the recipe instructions, ingredients, and rating to the user
+ * @author vblaha
  */
 const search = function () {
   const parsedUrl = new URL(window.location.href);//href is the full URL.Parsing the URL makes it easy to get the search param.
