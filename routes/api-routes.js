@@ -5,6 +5,12 @@ const literal = db.sequelize.literal;
 module.exports = function (app) {
 
   // http://localhost:8080/api/recipe?q=gin
+  /**
+   * looks in the request to see if there is a query param "q"
+   * if not return all recipes
+   * if present, use "q" as a search term to find all recipes that match recipe.name or ingredient.name
+   * @returns {array} - list of recipes 
+   */
   app.get('/api/recipe', function (req, res) {
     const query = req.query.q;
     let whereClause = {};
@@ -64,11 +70,12 @@ module.exports = function (app) {
     });
   });
   //**************gina code ends*****************************
-    // db.recipe.create(req.body, { include: [db.ingredient] }).then(function (dbRecipe) {
-    //   res.json(dbRecipe);
-    // })
+   
 
-  
+  /**
+   * uses the provided url param id to find a recipe
+   * @returns { object } -  a recipe and its ingredients
+   */
   app.get('/api/recipe/:id', function (req, res) {
     const id = req.params.id;
     db.recipe.findById(id, {

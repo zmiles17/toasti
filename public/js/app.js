@@ -100,7 +100,11 @@ const addNewRecipe = function(name, instruction, ingredients) {
 //***************************gina code ends*************************************
 
 $('document').ready(function () {
-    //this function is redirecting to the search-results.html
+    /**
+     * reads the value in the search bar 
+     * redirects the user to the search results page
+     * sets the query param "q" to the user's search term
+     */
     const resultsNavigation = function () {
         const searchterm = $('.search-bar').val();
         if (window) {
@@ -109,6 +113,11 @@ $('document').ready(function () {
             window.location = `/search_results?q=${encodeURIComponent(searchterm)}`;
         }
     }
+
+    /**
+     * listens to the search bar for the enter key to be pressed
+     * triggers the results page
+     */
     $('.search-bar').keypress(function (e) {
         if (e.which == 13) {//Enter key pressed
             e.preventDefault();
