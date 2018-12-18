@@ -1,7 +1,20 @@
 //**************gina code starts*****************************
+
+/**
+ * Render a message on element
+ * @param {String} element - DOM Element
+ * @param {String} htmlStr - Message to dispaly
+ * @author Gina Yi
+ */
 const render = function(element, htmlStr){
-    $(element).append(htmlStr)
+    $(element).append(htmlStr);
 }
+
+/**
+ * When enter key or tab key pressed from recipeName inputbox
+ * the instruction inputbox will be focused and the previous message will be cleared
+ * @author Gina Yi
+ */
 $('#recipeName').on("keydown",function (e) {
     if (e.which == 9 || e.which == 13)  {
         e.preventDefault();
@@ -10,6 +23,11 @@ $('#recipeName').on("keydown",function (e) {
     $('#showResult').empty();    
 });
 
+/**
+ * When enter key or tab key pressed from ingredientSection inputbox
+ * the next ingredient inputbox will be created until it reaches the max of 5
+ * @author Gina Yi
+ */
 $('#ingredientSection').on("keydown",'.ingredient',function (e) {
     if (e.which == 9 || e.which == 13)  {
         e.preventDefault();
@@ -19,7 +37,11 @@ $('#ingredientSection').on("keydown",'.ingredient',function (e) {
     };  
 });
 
-//Add input field dynamically
+
+/**
+ * Add input field dynamically
+ * @author Gina Yi
+ */
 $('#btnAddIngredient').click(function (e){
     e.preventDefault();
     if($('.ingredient').length < 5){
@@ -29,13 +51,20 @@ $('#btnAddIngredient').click(function (e){
     $(".addRecipeInput").last().focus();
     }
 })
-
-//Remove input field from the front-end
+/**
+ * Remove input field from the front-end UI
+ * @author Gina Yi
+ */
 $(document).on('click', '.remove', function() {
     let inputNeedToBeDeleted = $(this).parent();
-    inputNeedToBeDeleted.next().remove(); //remove <br />
-    inputNeedToBeDeleted.remove(); // then remove <span>
+    inputNeedToBeDeleted.next().remove();
+    inputNeedToBeDeleted.remove();
 })
+
+/**
+ * On submit, gather user input and call validateRecipe and addNewRecipe
+ * @author Gina Yi
+ */
 
 $('#frmAddRecipe').submit(function(e){
     e.preventDefault();
@@ -44,16 +73,21 @@ $('#frmAddRecipe').submit(function(e){
     let ingredients = [];
     $('.ingredient').each(function(){
         let ingredient = $(this).val().trim();
-        // if(ingredient != "")
-             ingredients.push($(this).val());
-             //console.log(ingredients);
+             ingredients.push($(this).val());            
     });
 
     if(validateRecipe(name, instruction, ingredients)){
         addNewRecipe(name, instruction, ingredients)
     }
 })
-
+/**
+ * Validate Recipe 
+ * @param {String} name 
+ * @param {String} instruction 
+ * @param {Array} ingredients 
+ * @return {Boolean} true or false
+ * @author Gina Yi
+ */
 const validateRecipe = function(name, instruction, ingredients) {
 
     if ((typeof name != 'string' || typeof instruction != 'string')  ) {       
@@ -73,14 +107,20 @@ const validateRecipe = function(name, instruction, ingredients) {
     };
     return true;
 }
-
+/**
+ * Create recipe object and make an API call to add a new recipe
+ * and display API call result
+ * @param {String} name 
+ * @param {String} instruction 
+ * @param {Array} ingredients 
+ * @author Gina Yi
+ */
 const addNewRecipe = function(name, instruction, ingredients) {
     let recipe = {
         name: name,
         instruction: instruction,
         ingredient: ingredients
     };
-    //console.log(recipe);
     $.post('/api/recipe', recipe)   
     .then(function(data){  
         console.log(data); 

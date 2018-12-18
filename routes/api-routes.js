@@ -45,10 +45,15 @@ module.exports = function (app) {
   });
 /*****************vblaha code ends***************************** */
   //**************gina code starts*****************************
+  /**
+   * API to post a cocktail recipe
+   * @param {obj} req - contains name, instruction, and array of objects  to post
+   * @returns {obj} res - returns recipe object on success else error object
+   * @author Gina Yi
+   */
   app.post("/api/recipe", function (req, res) {
 
     let ingredients = req.body.ingredient;
-    //convert array of strings into array of objects
     let ingredientList = [];
  
     ingredients.forEach(element => {
@@ -62,6 +67,7 @@ module.exports = function (app) {
     },{
       include:[db.ingredient]
     }).then(function (result) {
+      console.log(result);
       res.json(result);
     }).catch(function (err) {
       if(err.message == 'Validation error')
