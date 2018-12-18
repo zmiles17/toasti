@@ -7,11 +7,6 @@ describe('average', function () {
     });
 })
 
-//DOM/UI
-// describe('ratingRender', function(){
-//     it('should ')
-// })
-
 //****************Gina code starts*************************************
 //Unit Test
 
@@ -59,7 +54,6 @@ describe('add recipe', function () {
         $('#recipeName').val('Screwdriver');
         $('#instruction').val('Mix vodka and orange juice');
         $('#ingredient').val('1 cup vodka');
-        // $('#Ingredient2').val('1 1/2 cups orange juice');
 
         // mock server to handle Post
         server.respondWith('POST', '/api/recipe', [
@@ -141,23 +135,6 @@ describe('search', function () {
     });
 
     it('should render recipe', function () {
-
-        // server.respondWith('GET', '/api/recipe/null', [
-        //   200, { 'Content-Type': 'application/json' }, JSON.stringify({
-        //     instruction: 'Stir into glass over ice, garnish and serve',
-        //     name: 'Negroni',
-        //     ingredients: [
-        //         { name: '1 oz Gin' },
-        //         { name: '1 oz Campari' },
-        //         { name: '1 oz Sweet Vermouth' }],
-        //   })
-        // ]);
-
-        // server.respondWith('GET', 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=Negroni', [
-        //     200, { 'Content-Type': 'application/json' }, JSON.stringify({})
-        //   ]);
-
-
         const recipe = {
             instruction: 'Stir into glass over ice, garnish and serve',
             name: 'Negroni',
@@ -174,7 +151,6 @@ describe('search', function () {
 
         expect($('#recipe-title').text()).to.equal('Negroni');
         expect($('.instruction-body').text()).to.equal('Stir into glass over ice, garnish and serve');
-        // expect($('#image-0').attr('src')).to.equal('https://www.thecocktaildb.com/images/media/drink/tutwwv1439907127.jpg');
         expect($('.ingredient-list').html()).to.equal('<li>1 oz Gin</li><li>1 oz Campari</li><li>1 oz Sweet Vermouth</li>');
         
         // reset dom
