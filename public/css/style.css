@@ -97,12 +97,10 @@ span {
 
 .fab {
     font-size: 30px;
-    transition:  all 0.1s linear;
 }
 
 .fab:hover {
-    transform: scale(1.05);
-    transition:  all 0.1s linear;
+    color: blue;
 }
 
 footer {
