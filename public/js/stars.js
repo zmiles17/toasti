@@ -1,4 +1,9 @@
-
+/**
+ * calculates the average rating for a recipe and returns the average 
+ * @param  {number} allStars - all stars added up for every vote for a single recipe
+ * @param  {number} allVotes - all votes cast for a single recipe
+ * @author christiangraves
+ */
 const average = function (allStars, allVotes) {
     let theRtng = allStars / allVotes;
     let theAvg = (theRtng / 5)*100;
@@ -7,9 +12,16 @@ const average = function (allStars, allVotes) {
     return result;
 }
 
+
 let initialVote = false;
 let everyVote = 0;
 let everyStar = 0;
+/**
+ * casts vote on star click
+ * increments total vote count by one on each click and adds star number to totals stars for recipe
+ * @param  {object} event - event object passed to prevent page reloading on button click
+ * @author christiangraves
+ */
 const rating = async function (event) {
     event.preventDefault();
 
