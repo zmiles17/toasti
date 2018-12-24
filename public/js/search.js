@@ -4,8 +4,10 @@
  * calls the backend server
  * takes the search term and matches on recipe name or ingredient name
  * returns a list of recipes
+ * calculates average rating for displayed recipes and sets width for gold star css for rating display. 
  * displays the link and rating.
  * @author vblaha
+ * @author christiangraves 
  */
 const search = function () {
 
